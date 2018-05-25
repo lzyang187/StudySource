@@ -46,7 +46,7 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
 
 //        AssetManager assetManager = getAssets();
 //        try {
-//            AssetFileDescriptor fileDescriptor = assetManager.openFd("test1.mp4");
+//            AssetFileDescriptor fileDescriptor = assetManager.openFd("test2.mp4");
 //            mVideoPlayer.getMediaPlayer().setDataSource(fileDescriptor.getFileDescriptor(), fileDescriptor.getStartOffset(), fileDescriptor.getLength());
 //            mVideoPlayer.getMediaPlayer().prepareAsync();
 //        } catch (IOException e) {

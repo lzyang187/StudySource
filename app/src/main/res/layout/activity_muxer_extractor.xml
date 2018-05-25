@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".muxerextractor.MuxerExtractorActivity">
+
+    <Button
+        android:id="@+id/btn_extractor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="extractor" />
+
+    <Button
+        android:id="@+id/btn_extractor_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="extractoraudio" />
+
+    <Button
+        android:id="@+id/btn_extractor_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="extractorvideo" />
+
+    <Button
+        android:id="@+id/btn_muxer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="muxer" />
+
+</android.support.v7.widget.LinearLayoutCompat>
