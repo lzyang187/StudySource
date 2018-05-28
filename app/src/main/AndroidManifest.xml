@@ -3,8 +3,10 @@
     package="com.lzy.studysource">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".muxerextractor.MuxerExtractorActivity">
+        <activity android:name=".mediarecorder.MediaRecorderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +23,8 @@
             </intent-filter>
         </activity>
         <!-- <activity android:name=".player.video.surfaceview.SurfaceViewActivity"></activity> -->
-        <!--<activity android:name=".muxerextractor.MuxerExtractorActivity"></activity>-->
+        <!-- <activity android:name=".muxerextractor.MuxerExtractorActivity"></activity> -->
+        <!--<activity android:name=".mediarecorder.MediaRecorderActivity"></activity>-->
     </application>
 
 </manifest>
