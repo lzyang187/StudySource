@@ -16,18 +16,31 @@
         android:id="@+id/btn_extractor_audio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="extractoraudio" />
+        android:text="从视频中分离音频文件" />
 
     <Button
         android:id="@+id/btn_extractor_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="extractorvideo" />
+        android:text="从视频中分离视频文件" />
 
     <Button
         android:id="@+id/btn_muxer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="muxer" />
+        android:text="合并上面2个文件为新的视频文件" />
+
+    <Button
+        android:id="@+id/btn_decode_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解码音频为PCM文件" />
+
+    <Button
+        android:id="@+id/btn_encode_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="编码PCM文件" />
+
 
 </android.support.v7.widget.LinearLayoutCompat>
