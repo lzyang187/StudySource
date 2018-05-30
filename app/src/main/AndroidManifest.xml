@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".muxerextractor.MuxerExtractorActivity">
+        <activity android:name=".colormatrix.ColorMatrixActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +25,7 @@
         <!-- <activity android:name=".player.video.surfaceview.SurfaceViewActivity"></activity> -->
         <!-- <activity android:name=".muxerextractor.MuxerExtractorActivity"></activity> -->
         <!-- <activity android:name=".mediarecorder.MediaRecorderActivity"></activity> -->
+        <!--<activity android:name=".colormatrix.ColorMatrixActivity"></activity>-->
     </application>
 
 </manifest>
