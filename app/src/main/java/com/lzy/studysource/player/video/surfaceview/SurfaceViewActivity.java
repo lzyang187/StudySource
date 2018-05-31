@@ -2,6 +2,7 @@ package com.lzy.studysource.player.video.surfaceview;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -14,6 +15,8 @@ import com.lzy.studysource.R;
 import com.lzy.studysource.player.video.player.OnVideoPlayListener;
 import com.lzy.studysource.player.video.player.VideoPlayState;
 import com.lzy.studysource.player.video.player.VideoPlayer;
+
+import java.io.File;
 
 public class SurfaceViewActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, SurfaceHolder.Callback, OnVideoPlayListener {
     private static final int SEEKBAR_MAX = 100;
@@ -43,27 +46,44 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
         surfaceHolder.addCallback(this);
         mVideoPlayer = new VideoPlayer();
         mVideoPlayer.setOnVideoPlayListener(this);
-
-//        AssetManager assetManager = getAssets();
-//        try {
-//            AssetFileDescriptor fileDescriptor = assetManager.openFd("test2.mp4");
-//            mVideoPlayer.getMediaPlayer().setDataSource(fileDescriptor.getFileDescriptor(), fileDescriptor.getStartOffset(), fileDescriptor.getLength());
-//            mVideoPlayer.getMediaPlayer().prepareAsync();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
     }
 
     @Override
     public void onClick(View v) {
         if (v == mPlayBtn) {
-            mVideoPlayer.setDataSource("http://file.kuyinyun.com//group3/M00/9D/05/rBBGrFnxmEOAD3jGAB-40xQGO60544.mp4");
+            start();
         } else if (v == mPauseBtn) {
             mVideoPlayer.pause();
         } else if (v == mStopBtn) {
             mVideoPlayer.stop();
         }
+    }
+
+    private void start() {
+        mVideoPlayer.start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (mVideoPlayer.isPlaying()) {
+                    int currentPosition = mVideoPlayer.getCurrentPosition();
+                    if (mVideoPlayer.getDuration() > 0) {
+                        final int progress = currentPosition * 100 / mVideoPlayer.getDuration();
+                        Log.e("cyli8", "进度： " + progress);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mSeekBar.setProgress(progress);
+                            }
+                        });
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }).start();
     }
 
     private int mVideoPercent;
@@ -100,8 +120,9 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        mVideoPlayer.setDataSource("http://file.kuyinyun.com//group3/M00/9D/05/rBBGrFnxmEOAD3jGAB-40xQGO60544.mp4");
         mVideoPlayer.setDisplayer(holder);
+        File file = new File(Environment.getExternalStorageDirectory(), File.separator + "aaaaa" + File.separator + "test2.mp4");
+        mVideoPlayer.setDataSource(file.getAbsolutePath());
     }
 
     @Override
@@ -134,7 +155,9 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onPrepared(MediaPlayer mp) {
-        mVideoPlayer.start();
+        mVideoPlayer.getMediaPlayer().setLooping(true);
+        mVideoPlayer.getMediaPlayer().setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
+        start();
     }
 
     @Override
