@@ -1,6 +1,6 @@
 package com.lzy.studysource.java;
 
-import com.lzy.studysource.arithmetic.TwoStackQueen;
+import com.lzy.studysource.arithmetic.Bit;
 
 /**
  * @author: cyli8
@@ -30,14 +30,20 @@ public class Test {
 //        String str = String.format("%s很好听%1$s", "小幸运", "江南");
 //        System.out.println(str);
 
-        TwoStackQueen<Integer> twoStackQueen = new TwoStackQueen<>();
-        twoStackQueen.add(1);
-        twoStackQueen.add(2);
-        twoStackQueen.add(3);
-        System.out.println(twoStackQueen.poll());
-        System.out.println(twoStackQueen.poll());
-        System.out.println(twoStackQueen.poll());
-        twoStackQueen.add(4);
-        System.out.println(twoStackQueen.poll());
+//        TwoStackQueen<Integer> twoStackQueen = new TwoStackQueen<>();
+//        twoStackQueen.add(1);
+//        twoStackQueen.add(2);
+//        twoStackQueen.add(3);
+//        System.out.println(twoStackQueen.poll());
+//        System.out.println(twoStackQueen.poll());
+//        System.out.println(twoStackQueen.poll());
+//        twoStackQueen.add(4);
+//        System.out.println(twoStackQueen.poll());
+
+//        System.out.println(Bit.isOdd(1));
+//        System.out.println(Bit.isOdd(1024));
+
+        System.out.println(Bit.log2(0));
+        System.out.println(Bit.log2(1024));
     }
 }
