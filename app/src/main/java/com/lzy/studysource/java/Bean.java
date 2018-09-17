@@ -7,6 +7,8 @@ import java.io.Serializable;
  * @date: 2018/6/25 10:34
  */
 public class Bean implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     public String name;
     public int age;
 
