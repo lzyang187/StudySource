@@ -7,6 +7,17 @@
     tools:context=".constraint.ConstraintActivity">
 
     <TextView
+        android:id="@+id/tv_banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#989"
+        android:gravity="center"
+        android:text="banner"
+        app:layout_constraintDimensionRatio="h,16:6"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
         android:id="@+id/tv_a"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -15,7 +26,7 @@
         android:background="@color/colorAccent"
         android:text="A"
         app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tv_banner" />
 
     <TextView
         android:id="@+id/tv_b"
@@ -59,10 +70,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="bias比例"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_center" />
 
-    
+    <TextView
+        android:id="@+id/tv_tab1"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#777"
+        android:text="tab1"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_tab2" />
+
+    <TextView
+        android:id="@+id/tv_tab2"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#888"
+        android:text="tab2"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="@id/tv_tab1"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/tv_tab1"
+        app:layout_constraintRight_toRightOf="@id/tv_tab3" />
+
+    <TextView
+        android:id="@+id/tv_tab3"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#999"
+        android:text="tab3"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/tv_tab2"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

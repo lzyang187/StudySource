@@ -18,6 +18,7 @@
         <activity android:name=".webview.WebViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -26,7 +27,7 @@
         <!-- <activity android:name=".muxerextractor.MuxerExtractorActivity"></activity> -->
         <!-- <activity android:name=".mediarecorder.MediaRecorderActivity"></activity> -->
         <!-- <activity android:name=".colormatrix.ColorMatrixActivity"></activity> -->
-        <activity android:name=".constraint.ConstraintActivity" />
+        <!--<activity android:name=".constraint.ConstraintActivity" />-->
         <!-- <activity android:name=".java.RecyclerViewActivity"></activity> -->
         <!--<activity android:name=".WebViewActivity"></activity>-->
     </application>
