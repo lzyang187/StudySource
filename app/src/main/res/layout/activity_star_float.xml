@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.StarFloatActivity">
+
+    <com.lzy.studysource.ui.FloatView
+        android:id="@+id/float_view"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:chidTextSize="3sp"
+        app:childTextColor="@color/white"
+        app:childViewBackground="@drawable/shape_circle"
+        app:parentViewBackground="@drawable/float_bg" />
+
+</android.support.constraint.ConstraintLayout>
