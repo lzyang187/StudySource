@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.StarFloatActivity">
+        <activity android:name=".sms.SendSmsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -30,7 +33,7 @@
         <!-- <activity android:name=".constraint.ConstraintActivity" /> -->
         <!-- <activity android:name=".java.RecyclerViewActivity"></activity> -->
         <!-- <activity android:name=".WebViewActivity"></activity> -->
-        <!--<activity android:name=".ui.StarFloatActivity"></activity>-->
+        <!--<activity android:name=".sms.SendSmsActivity"></activity>-->
     </application>
 
 </manifest>
