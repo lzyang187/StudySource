@@ -1,7 +1,5 @@
 package com.lzy.studysource.java;
 
-import com.lzy.studysource.arithmetic.Bit;
-
 /**
  * @author: cyli8
  * @date: 2018/6/25 10:35
@@ -43,7 +41,10 @@ public class Test {
 //        System.out.println(Bit.isOdd(1));
 //        System.out.println(Bit.isOdd(1024));
 
-        System.out.println(Bit.log2(0));
-        System.out.println(Bit.log2(1024));
+//        System.out.println(Bit.log2(0));
+//        System.out.println(Bit.log2(1024));
+        System.out.println("\\");
+        System.out.println("\"");
+
     }
 }
