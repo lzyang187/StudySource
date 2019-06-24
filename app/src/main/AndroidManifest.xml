@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme">
         <!--<activity android:name=".snaphelper.SnapHelperActivity"></activity>-->
         <!-- <activity android:name=".jetpack.JetPackActivity"></activity> -->
-        <activity android:name=".snaphelper.SnapHelperActivity">
+        <activity android:name=".muxerextractor.MuxerExtractorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

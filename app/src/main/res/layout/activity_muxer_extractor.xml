@@ -7,12 +7,6 @@
     tools:context=".muxerextractor.MuxerExtractorActivity">
 
     <Button
-        android:id="@+id/btn_extractor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="extractor" />
-
-    <Button
         android:id="@+id/btn_extractor_audio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +35,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="编码PCM文件" />
-
 
 </android.support.v7.widget.LinearLayoutCompat>
