@@ -1,8 +1,9 @@
 package com.lzy.studysource.dialogfragment;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lzy.studysource.R;
 

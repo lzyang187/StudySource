@@ -3,10 +3,11 @@ package com.lzy.studysource.mediarecorder;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lzy.studysource.R;
 

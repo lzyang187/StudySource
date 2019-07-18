@@ -7,11 +7,12 @@ import android.media.MediaFormat;
 import android.media.MediaMuxer;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lzy.studysource.R;
 
@@ -24,7 +25,7 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 public class MuxerExtractorActivity extends AppCompatActivity implements View.OnClickListener {
-
+    private static final String TAG = "MuxerExtractorActivity";
     private File mRootFile = new File(Environment.getExternalStorageDirectory(), "aaaaa");
 
     private Button mExtractorAudioBtn;
@@ -205,6 +206,7 @@ public class MuxerExtractorActivity extends AppCompatActivity implements View.On
                         videoExtractor.selectTrack(i);
                         videoFrameRate = videoTrackFormat.getInteger(MediaFormat.KEY_FRAME_RATE);
                         outVideoTrackIndex = mediaMuxer.addTrack(videoTrackFormat);
+                        Log.i(TAG, "muxer: outVideoTrackIndex = " + outVideoTrackIndex);
                         break;
                     }
                 }
@@ -226,6 +228,7 @@ public class MuxerExtractorActivity extends AppCompatActivity implements View.On
                         videoExtractor.unselectTrack(i);
                         videoExtractor.selectTrack(i);
                         outAudioTrackIndex = mediaMuxer.addTrack(audioTrackFormat);
+                        Log.i(TAG, "muxer: outAudioTrackIndex = " + outAudioTrackIndex);
                         break;
                     }
                 }

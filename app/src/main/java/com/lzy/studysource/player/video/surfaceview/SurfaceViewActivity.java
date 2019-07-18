@@ -3,13 +3,14 @@ package com.lzy.studysource.player.video.surfaceview;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lzy.studysource.R;
 import com.lzy.studysource.player.video.player.OnVideoPlayListener;
