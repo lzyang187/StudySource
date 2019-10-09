@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lzy.studysource">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,16 +18,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <activity android:name=".materialdesign.CardViewActivity"></activity>-->
-        <activity android:name=".materialdesign.CardViewActivity">
+        <activity android:name=".toolbar.ToolbarActivity"></activity>
+        <!-- <activity android:name=".lrucache.LruCacheActivity"></activity> -->
+        <!-- <activity android:name=".ui.BaseActivity"></activity> -->
+        <!-- <activity android:name=".materialdesign.CardViewActivity"></activity> -->
+        <activity android:name=".lrucache.LruCacheActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- <activity android:name=".materialdesign.CoordinatorViewPagerActivity"></activity> -->
+        </activity> <!-- <activity android:name=".materialdesign.CoordinatorViewPagerActivity"></activity> -->
         <!-- <activity android:name=".materialdesign.CoordinatorLayoutActivity"></activity> -->
         <!-- <activity android:name=".snaphelper.SnapHelperActivity"></activity> -->
         <!-- <activity android:name=".jetpack.JetPackActivity"></activity> -->
@@ -34,14 +45,5 @@
             android:name=".job.MyJobService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

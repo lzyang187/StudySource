@@ -13,9 +13,10 @@
         android:background="#989"
         android:gravity="center"
         android:text="banner"
-        app:layout_constraintDimensionRatio="h,16:6"
+        app:layout_constraintDimensionRatio="16:6"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_a"
@@ -28,23 +29,28 @@
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_banner" />
 
-    <TextView
+    <Button
         android:id="@+id/tv_b"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="B"
-        app:layout_constraintLeft_toRightOf="@id/tv_a"
+        android:text="BBBBBB"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_a" />
 
-    <TextView
+    <Button
         android:id="@+id/tv_c"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="C"
-        app:layout_constraintLeft_toLeftOf="@id/tv_a"
-        app:layout_constraintTop_toBottomOf="@id/tv_a" />
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@color/colorAccent"
+        android:text="CCCCCC"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_b"
+        app:layout_constraintLeft_toRightOf="@id/tv_b"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_a"
+        app:layout_goneMarginStart="30dp" />
 
     <TextView
         android:id="@+id/tv_d"
@@ -62,18 +68,84 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="居中"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_d" />
 
-    <Button
+    <TextView
+        android:id="@+id/circle_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="圆形角度定位"
+        android:textColor="@color/white"
+        app:layout_constraintCircle="@id/btn_center"
+        app:layout_constraintCircleAngle="45"
+        app:layout_constraintCircleRadius="60dp"
+        app:layout_constraintLeft_toLeftOf="@id/btn_center"
+        app:layout_constraintTop_toTopOf="@id/btn_center" />
+
+    <TextView
+        android:id="@+id/percent_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="宽度percent"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_center"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="用户名：barrier用法"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/percent_tv" />
+
+    <TextView
+        android:id="@+id/password_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="密码密码密码："
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_tv" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="name_tv,password_tv" />
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:visibility="visible"
+        app:constraint_referenced_ids="password_tv,name_tv"
+        app:layout_constraintLeft_toLeftOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/percent_tv" />
+
+    <androidx.constraintlayout.widget.Placeholder
+        android:id="@+id/placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
         android:text="bias比例"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_center" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
         android:id="@+id/tv_tab1"
@@ -83,7 +155,7 @@
         android:text="tab1"
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_weight="2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tv_tab2" />
@@ -108,8 +180,34 @@
         android:text="tab3"
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintHorizontal_weight="2"
         app:layout_constraintLeft_toRightOf="@id/tv_tab2"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="100dp" />
+
+    <TextView
+        android:id="@+id/guide_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="guideline"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/guide_horizontal"
+        app:layout_constraintLeft_toLeftOf="@id/guide_vertical"
+        app:layout_constraintRight_toLeftOf="@id/guide_vertical"
+        app:layout_constraintTop_toTopOf="@id/guide_horizontal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

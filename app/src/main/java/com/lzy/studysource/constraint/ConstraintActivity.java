@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Placeholder;
 
 import com.lzy.studysource.R;
 
@@ -23,5 +24,8 @@ public class ConstraintActivity extends AppCompatActivity {
 
         Log.i(TAG, "getExternalStorageDirectory:" + Environment.getExternalStorageDirectory().getAbsolutePath() +
                 "\n getExternalCacheDir" + getExternalCacheDir().getAbsolutePath());
+
+        Placeholder placeholder = findViewById(R.id.placeholder);
+        placeholder.setContentId(R.id.btn_center);
     }
 }
