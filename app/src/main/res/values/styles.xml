@@ -19,4 +19,28 @@
         <attr name="chidTextSize" format="dimension" />
     </declare-styleable>
 
+    <style name="Theme.ToolBar.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="actionOverflowButtonStyle">@style/Theme.ToolBar.Overflow</item>
+    </style>
+
+    <style name="Theme.ToolBar.Overflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@mipmap/ic_menu_more_overflow</item>
+    </style>
+
+    <style name="Theme.ToolBar.Title" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.ToolBar.Subtitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.ToolBar.PopupMenu" parent="Widget.AppCompat.Light.PopupMenu">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+
 </resources>
