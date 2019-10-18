@@ -1,6 +1,7 @@
 package com.lzy.studysource.constraint;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -13,6 +14,8 @@ import com.lzy.studysource.ui.BaseActivity;
 import com.lzy.studysource.ui.BaseFragment;
 import com.lzy.studysource.ui.BaseTitleActivity;
 
+import java.io.File;
+
 public class ConstraintActivity extends AppCompatActivity {
     private static final String TAG = "ConstraintActivity";
 
@@ -24,10 +27,19 @@ public class ConstraintActivity extends AppCompatActivity {
         Log.i(TAG, "getDataDirectory:" + Environment.getDataDirectory().getAbsolutePath() +
                 "\ngetFilesDir:" + getFilesDir().getAbsolutePath() +
                 "\ngetCacheDir:" + getCacheDir().getAbsolutePath() +
-                "\ngetDir:" + getDir("fileName", MODE_PRIVATE).getAbsolutePath());
+                "\ngetDir:" + getDir("fileName", MODE_PRIVATE).getAbsolutePath() +
+                "\ngetDatabasePath:" + getDatabasePath("db").getAbsolutePath());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            File dataDir = getDataDir();
+            Log.i(TAG, "getDataDir(): " + dataDir);
+        }
+        File db = getDatabasePath("db");
+        File parentFile = db.getParentFile();
+        Log.i(TAG, "db parentFile: " + parentFile);
         //外部存储
         Log.i(TAG, "getExternalStorageDirectory:" + Environment.getExternalStorageDirectory().getAbsolutePath() +
-                "\n getExternalCacheDir" + getExternalCacheDir().getAbsolutePath());
+                "\n getExternalCacheDir" + getExternalCacheDir().getAbsolutePath() +
+                "\n getExternalFilesDir" + getExternalFilesDir(""));
 
         Placeholder placeholder = findViewById(R.id.placeholder);
 //        placeholder.setContentId(R.id.btn_center);
