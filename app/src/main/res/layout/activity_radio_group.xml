@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".radiogroup.RadioGroupActivity">
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/replace_rule_tab_bg"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_single_book"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/replace_rule_tab_radio_left_bg"
+            android:button="@color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:text="作用于本书"
+            android:textColor="@color/replace_rule_tab_radio_color"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/radio_other_book"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/replace_rule_tab_radio_right_bg"
+            android:button="@color/transparent"
+            android:checked="false"
+            android:gravity="center"
+            android:text="作用于其他书"
+            android:textColor="@color/replace_rule_tab_radio_color"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/radio_global_book"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/replace_rule_tab_radio_right_bg"
+            android:button="@color/transparent"
+            android:checked="false"
+            android:gravity="center"
+            android:text="作用于全部书"
+            android:textColor="@color/replace_rule_tab_radio_color"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
