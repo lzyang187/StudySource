@@ -40,7 +40,7 @@
         <!-- <activity android:name=".lrucache.LruCacheActivity"></activity> -->
         <!-- <activity android:name=".viewpager2.ViewPager2Activity"></activity> -->
         <!-- <activity android:name=".materialdesign.CardViewActivity"></activity> -->
-        <activity android:name=".widget.WidgetActivity">
+        <activity android:name=".colormatrix.ColorMatrixActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
