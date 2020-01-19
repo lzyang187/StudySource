@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lzy.studysource.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RecyclerViewActivity extends AppCompatActivity {
@@ -25,7 +27,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view);
         Button btn = findViewById(R.id.btn);
         final RecyclerView rv = findViewById(R.id.rv);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
+                false);
         rv.setLayoutManager(layoutManager);
         final List<String> list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
@@ -34,27 +37,36 @@ public class RecyclerViewActivity extends AppCompatActivity {
         final MyAdapter adapter = new MyAdapter(this, list);
         rv.setAdapter(adapter);
 
-//        adapter.notifyItemInserted();
-//        adapter.notifyItemRangeInserted();
-//
-//        adapter.notifyItemRemoved();
-//        adapter.notifyItemRangeRemoved();
-//
-//        adapter.notifyItemRangeChanged();
+        btn.setOnClickListener(v -> {
+            //adapter.notifyItemInserted()的使用
+//                list.add(1, "add 1");
+//                adapter.notifyItemInserted(1);
+//                adapter.notifyItemRangeChanged(1, list.size() - 1);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            //adapter.notifyItemRangeInserted()的使用
 //                list.add(0, "add 0");
-//                list.add(0, "add 1");
-//                list.add(0, "add 2");
+//                list.add(1, "add 1");
+//                list.add(2, "add 2");
 //                adapter.notifyItemRangeInserted(0, 3);
+//                adapter.notifyItemRangeChanged(3, list.size() - 3);
 //                rv.scrollToPosition(0);
 
-//                list.remove(list.size() - 1);
-//                adapter.notifyItemRemoved(list.size());
+            //adapter.notifyItemRemoved()的使用
+//                list.remove(1);
+//                adapter.notifyItemRemoved(1);
+//                adapter.notifyItemRangeChanged(1, list.size() - 1);
 
-            }
+            //adapter.notifyItemRangeRemoved()的使用
+//                list.remove(1);
+//                list.remove(1);
+//                list.remove(1);
+//                adapter.notifyItemRangeRemoved(1, 3);
+//                adapter.notifyItemRangeChanged(1, list.size() - 1);
+
+            //adapter.notifyItemMoved()的使用
+            Collections.swap(list, 1, 3);
+            adapter.notifyItemMoved(1, 3);
+            adapter.notifyItemRangeChanged(1, 3);
         });
     }
 
@@ -78,7 +90,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.bindViewHolder(mList.get(position));
+        holder.bindViewHolder(position, mList.get(position));
     }
 
     @Override
@@ -94,8 +106,9 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             mTv = itemView.findViewById(R.id.tv);
         }
 
-        public void bindViewHolder(String str) {
+        public void bindViewHolder(int pos, String str) {
             mTv.setText(str);
+            mTv.setOnClickListener(v -> Toast.makeText(mContext, "pos=" + pos + " str=" + str, Toast.LENGTH_SHORT).show());
         }
     }
 }

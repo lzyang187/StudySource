@@ -11,12 +11,12 @@
         android:id="@+id/action_notification"
         android:icon="@mipmap/ic_notifications"
         android:title="通知"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/item_1"
         android:title="item1"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/item_2"

@@ -29,6 +29,7 @@
 
     <style name="Theme.ToolBar.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="actionOverflowButtonStyle">@style/Theme.ToolBar.Overflow</item>
+        <item name="actionMenuTextColor">@color/white</item>
     </style>
 
     <style name="Theme.ToolBar.Overflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
@@ -37,7 +38,9 @@
 
     <style name="Theme.ToolBar.Title" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="Theme.ToolBar.Subtitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">

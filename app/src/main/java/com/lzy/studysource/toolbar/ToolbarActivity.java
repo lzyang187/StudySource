@@ -1,5 +1,6 @@
 package com.lzy.studysource.toolbar;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,11 +15,12 @@ import com.lzy.studysource.R;
 
 public class ToolbarActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
@@ -32,7 +34,7 @@ public class ToolbarActivity extends AppCompatActivity {
                 toast("点击导航");
             }
         });
-//        toolbar.setTitle("标题");
+        toolbar.setTitle("标题很长很长很长的标题哈哈哈哈哈哈啊哈哈哈很长哈哈哈哈哈哈啊哈哈哈");
 //        toolbar.setTitleTextAppearance(this, R.style.Theme_ToolBar_Title);
 //        toolbar.setSubtitle("副标题");
 //        toolbar.setSubtitleTextAppearance(this, R.style.Theme_ToolBar_Subtitle);
@@ -70,6 +72,7 @@ public class ToolbarActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
+        toolbar.getMenu().getItem(2).setTitle("item1重命名");
         switch (itemId) {
             case R.id.action_search:
                 toast("搜索");
