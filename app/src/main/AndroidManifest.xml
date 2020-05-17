@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!-- <activity android:name=".imagetext.ImageTextActivity"></activity>-->
+        <!-- <activity android:name=".drawLayout.DrawLayoutActivity"></activity>-->
+        <!-- <activity android:name=".downloadmanager.DownloadManagerActivity"></activity> -->
+        <!-- <activity android:name=".imagetext.ImageTextActivity"></activity> -->
         <!-- <activity android:name=".widget.WidgetActivity"></activity> -->
         <activity
             android:name=".lockscreen.ScreenActivity"
@@ -40,7 +42,7 @@
         <!-- <activity android:name=".lrucache.LruCacheActivity"></activity> -->
         <!-- <activity android:name=".viewpager2.ViewPager2Activity"></activity> -->
         <!-- <activity android:name=".materialdesign.CardViewActivity"></activity> -->
-        <activity android:name=".imagetext.ImageTextActivity">
+        <activity android:name=".drawLayout.DrawLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
