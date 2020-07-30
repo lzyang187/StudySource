@@ -3,6 +3,7 @@ package com.lzy.studysource.jetpack.camerax;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Toast;
@@ -24,6 +25,8 @@ import com.lzy.studysource.R;
 import java.io.File;
 
 public class CameraXActivity extends AppCompatActivity {
+    private static final String TAG = "CameraXActivity";
+
     private TextureView mViewFinder;
     private Preview mPreview;
     private ImageCapture mImageCapture;
@@ -82,7 +85,7 @@ public class CameraXActivity extends AppCompatActivity {
             @Override
             public void analyze(ImageProxy image, int rotationDegrees) {
                 // image 会不断传进来，你可以对它进行各种你想要的操作
-
+                Log.d(TAG, "analyze: " + image.toString());
             }
         });
 
