@@ -20,14 +20,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!-- <activity android:name=".drawLayout.DrawLayoutActivity"></activity>-->
+        <activity android:name=".animation.viewanimation.ViewAnimationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- <activity android:name=".animation.viewanimation.ViewAnimActivity"/> -->
+        <!-- <activity android:name=".drawLayout.DrawLayoutActivity"></activity> -->
         <!-- <activity android:name=".downloadmanager.DownloadManagerActivity"></activity> -->
         <!-- <activity android:name=".imagetext.ImageTextActivity"></activity> -->
         <!-- <activity android:name=".widget.WidgetActivity"></activity> -->
         <activity
             android:name=".lockscreen.ScreenActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
             android:theme="@style/locktheme" />
 
         <service
@@ -43,16 +49,7 @@
         <!-- <activity android:name=".viewpager2.ViewPager2Activity"></activity> -->
         <!-- <activity android:name=".materialdesign.CardViewActivity"></activity> -->
         <activity android:name=".jetpack.room.UserAndBookDaoActivity" />
-        <activity android:name=".jetpack.room.UserBookJoinDaoActivity" />
-        <activity android:name=".jetpack.room.BookDaoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <!-- <activity android:name=".materialdesign.CoordinatorViewPagerActivity"></activity> -->
+        <activity android:name=".jetpack.room.UserBookJoinDaoActivity" /> <!-- <activity android:name=".materialdesign.CoordinatorViewPagerActivity"></activity> -->
         <!-- <activity android:name=".materialdesign.CoordinatorLayoutActivity"></activity> -->
         <!-- <activity android:name=".snaphelper.SnapHelperActivity"></activity> -->
         <!-- <activity android:name=".jetpack.JetPackActivity"></activity> -->
