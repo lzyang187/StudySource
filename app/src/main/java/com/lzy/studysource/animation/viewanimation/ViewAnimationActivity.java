@@ -1,5 +1,6 @@
 package com.lzy.studysource.animation.viewanimation;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.animation.Animation;
@@ -20,6 +21,10 @@ public class ViewAnimationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_view_anim);
+
+        mBinding.iv.setBackgroundResource(R.drawable.frame_anim);
+        AnimationDrawable animationDrawable = (AnimationDrawable) mBinding.iv.getBackground();
+        animationDrawable.start();
     }
 
     @Override
@@ -46,5 +51,7 @@ public class ViewAnimationActivity extends AppCompatActivity {
             }
         });
         mBinding.transBtn.startAnimation(animation);
+
+
     }
 }
