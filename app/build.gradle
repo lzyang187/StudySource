@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -68,6 +69,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'com.google.android.material:material:1.1.0-alpha08'
     implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     // Use the most recent version of CameraX, currently that is alpha04
     def camerax_version = "1.0.0-alpha04"
     implementation "androidx.camera:camera-core:${camerax_version}"

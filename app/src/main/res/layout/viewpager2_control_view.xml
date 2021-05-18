@@ -41,5 +41,11 @@
             android:layout_height="wrap_content"
             android:text="添加一项" />
 
+        <Button
+            android:id="@+id/delete_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="减少一项" />
+
     </LinearLayout>
 </merge>

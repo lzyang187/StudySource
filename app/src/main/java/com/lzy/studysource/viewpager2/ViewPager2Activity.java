@@ -90,6 +90,14 @@ public class ViewPager2Activity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.delete_data).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.remove(0);
+                viewAdapter.notifyItemRemoved(0);
+            }
+        });
+
         viewPager2.setOffscreenPageLimit(3);
 
         TabLayout tabLayout = findViewById(R.id.tablayout);
