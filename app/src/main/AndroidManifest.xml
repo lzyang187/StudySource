@@ -12,6 +12,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
+    <!-- 为了让您的应用使用 OpenGL ES 2.0 API，您必须将以下声明添加到清单中 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -20,13 +25,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".animation.viewanimation.ViewAnimationActivity">
+        <!-- <activity android:name=".opengles.OpenGlActivity"/> -->
+        <!-- <activity android:name=".countdown.CountDownTimerActivity"/> -->
+        <activity android:name=".opengles.OpenGlActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- <activity android:name=".animation.viewanimation.ViewAnimActivity"/> -->
+        </activity>
+        <!-- <activity android:name=".animation.viewanimation.ViewAnimActivity"/> -->
         <!-- <activity android:name=".drawLayout.DrawLayoutActivity"></activity> -->
         <!-- <activity android:name=".downloadmanager.DownloadManagerActivity"></activity> -->
         <!-- <activity android:name=".imagetext.ImageTextActivity"></activity> -->

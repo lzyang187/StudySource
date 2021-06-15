@@ -16,7 +16,7 @@
         android:singleLine="true"
         android:text="哈哈哈有市民们的好好贡献纳税就能让城市快速发展" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
