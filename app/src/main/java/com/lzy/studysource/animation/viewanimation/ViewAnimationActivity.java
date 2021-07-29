@@ -3,6 +3,7 @@ package com.lzy.studysource.animation.viewanimation;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
@@ -25,33 +26,33 @@ public class ViewAnimationActivity extends AppCompatActivity {
         mBinding.iv.setBackgroundResource(R.drawable.frame_anim);
         AnimationDrawable animationDrawable = (AnimationDrawable) mBinding.iv.getBackground();
         animationDrawable.start();
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        Animation animation = AnimationUtils.loadAnimation(this, R.anim.translate_anim);
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate_anim);
-        animation.setInterpolator(new LinearInterpolator());
-//        Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_anim);
-        animation.setAnimationListener(new Animation.AnimationListener() {
+        mBinding.transBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                Log.e(TAG, "onAnimationStart: ");
-            }
+            public void onClick(View v) {
+                // Animation animation = AnimationUtils.loadAnimation(this, R.anim.translate_anim);
+                Animation animation = AnimationUtils.loadAnimation(ViewAnimationActivity.this, R.anim.rotate_anim);
+                animation.setInterpolator(new LinearInterpolator());
+                // Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_anim);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        Log.e(TAG, "onAnimationStart: ");
+                    }
 
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                Log.e(TAG, "onAnimationEnd: ");
-            }
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        Log.e(TAG, "onAnimationEnd: ");
+                    }
 
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                Log.e(TAG, "onAnimationRepeat: ");
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        Log.e(TAG, "onAnimationRepeat: ");
+                    }
+                });
+                mBinding.transBtn.startAnimation(animation);
             }
         });
-        mBinding.transBtn.startAnimation(animation);
-
-
     }
+
 }

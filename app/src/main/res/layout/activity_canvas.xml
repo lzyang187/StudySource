@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom1="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".widget.CanvasActivity">
+
+    <com.lzy.studysource.widget.CanvasView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.lzy.studysource.widget.PathView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.lzy.studysource.widget.TwoBezierView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.lzy.studysource.widget.ThreeBezierView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.lzy.studysource.widget.DrawPadBezierView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.lzy.studysource.widget.PathBezierView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.lzy.studysource.widget.custom.CustomView1
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:visibility="gone"
+        custom1:alpha="0.5"
+        custom1:background="@mipmap/bg_lsvip"
+        custom1:color="@color/colorAccent"
+        custom1:count="3"
+        custom1:focus="true"
+        custom1:layout_constraintStart_toStartOf="parent"
+        custom1:layout_constraintTop_toTopOf="parent"
+        custom1:orientation="vertical"
+        custom1:pivot="30%"
+        custom1:size="20sp"
+        custom1:text="文本类型" />
+
+    <com.lzy.studysource.widget.custom.ClockView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        custom1:layout_constraintStart_toStartOf="parent"
+        custom1:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

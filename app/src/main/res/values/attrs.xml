@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView1">
+        <attr name="text" format="string" />
+        <!-- 尺寸值 -->
+        <attr name="size" format="dimension" />
+        <!-- 颜色 -->
+        <attr name="color" format="color" />
+        <!-- boolean值 -->
+        <attr name="focus" format="boolean" />
+        <!-- 参考某一资源ID -->
+        <attr name="background" format="reference" />
+        <attr name="count" format="integer" />
+        <attr name="alpha" format="float" />
+        <!-- 百分数 -->
+        <attr name="pivot" format="fraction" />
+        <!-- 枚举 -->
+        <attr name="orientation">
+            <enum name="horizontal" value="1" />
+            <enum name="vertical" value="2" />
+        </attr>
+    </declare-styleable>
+
+</resources>
