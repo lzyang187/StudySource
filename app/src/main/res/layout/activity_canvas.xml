@@ -57,6 +57,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:visibility="gone"
+        custom1:layout_constraintStart_toStartOf="parent"
+        custom1:layout_constraintTop_toTopOf="parent" />
+
+    <com.lzy.studysource.widget.custom.BitmapDrawView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         custom1:layout_constraintStart_toStartOf="parent"
         custom1:layout_constraintTop_toTopOf="parent" />
 
