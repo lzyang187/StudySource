@@ -60,8 +60,10 @@ class ClockView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
             drawCircle(width / 2f, height / 2f, 10f, mBlackPaint)
             // 画外圈圆
             mBlackPaint.style = Paint.Style.STROKE
-            drawCircle(width / 2f, height / 2f, width / 2f - mBlackPaint.strokeWidth / 2,
-                mBlackPaint)
+            drawCircle(
+                width / 2f, height / 2f, width / 2f - mBlackPaint.strokeWidth / 2,
+                mBlackPaint
+            )
             // 画刻度
             save()
             for (i in 0..60) {
@@ -99,23 +101,29 @@ class ClockView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
             val secondLength = width / 2f - 50
             // 时针
             save()
-            rotate(hour * (360 / 12).toFloat(), width / 2f, height / 2f)
+            val hourDegrees = (hour * (360 / 12) + minute * 30 / 60).toFloat()
+            rotate(hourDegrees, width / 2f, height / 2f)
             mRedPaint.strokeWidth = 10f
             drawLine(width / 2f, height / 2f - hourLength, width / 2f, height / 2f + 30, mRedPaint)
             restore()
             // 分针
             save()
-            rotate(minute * (360 / 60).toFloat(), width / 2f, height / 2f)
+            val minuteDegrees = (minute * (360 / 60) + second * 6 / 60).toFloat()
+            rotate(minuteDegrees, width / 2f, height / 2f)
             mRedPaint.strokeWidth = 5f
-            drawLine(width / 2f, height / 2f - minuteLength, width / 2f, height / 2f + 40,
-                mRedPaint)
+            drawLine(
+                width / 2f, height / 2f - minuteLength, width / 2f, height / 2f + 40,
+                mRedPaint
+            )
             restore()
             // 秒针
             save()
             rotate(second * (360 / 60).toFloat(), width / 2f, height / 2f)
             mRedPaint.strokeWidth = 2f
-            drawLine(width / 2f, height / 2f - secondLength, width / 2f, height / 2f + 50,
-                mRedPaint)
+            drawLine(
+                width / 2f, height / 2f - secondLength, width / 2f, height / 2f + 50,
+                mRedPaint
+            )
             restore()
             // 一秒重绘一次
             postInvalidateDelayed(1000)
