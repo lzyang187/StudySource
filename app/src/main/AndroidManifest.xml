@@ -23,10 +23,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name=".widget.CanvasActivity"></activity>-->
+        <!--<activity
+            android:name=".animation.valueanimation.ValueAnimatorActivity"
+            android:exported="true" />-->
+        <!-- <activity android:name=".widget.CanvasActivity"></activity> -->
         <!-- <activity android:name=".opengles.OpenGlActivity"/> -->
         <!-- <activity android:name=".countdown.CountDownTimerActivity"/> -->
-        <activity android:name=".widget.CanvasActivity">
+        <activity
+            android:name=".animation.valueanimation.ValueAnimatorActivity"
+            android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

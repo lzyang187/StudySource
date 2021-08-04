@@ -64,6 +64,7 @@
     <com.lzy.studysource.widget.custom.BitmapDrawView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         custom1:layout_constraintStart_toStartOf="parent"
         custom1:layout_constraintTop_toTopOf="parent" />
 

@@ -31,7 +31,10 @@ class BitmapDrawView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int)
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+        canvas?.save()
+        canvas?.rotate(30f, 250f, 250f)
         canvas?.drawBitmap(mBitmap, Matrix(), Paint())
+        canvas?.restore()
     }
 
 }
