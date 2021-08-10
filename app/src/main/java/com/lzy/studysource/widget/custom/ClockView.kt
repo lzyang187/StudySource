@@ -8,7 +8,9 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import java.util.*
+import kotlin.math.cos
 import kotlin.math.min
+import kotlin.math.sin
 
 /**
  * 钟表View
@@ -60,10 +62,8 @@ class ClockView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
             drawCircle(width / 2f, height / 2f, 10f, mBlackPaint)
             // 画外圈圆
             mBlackPaint.style = Paint.Style.STROKE
-            drawCircle(
-                width / 2f, height / 2f, width / 2f - mBlackPaint.strokeWidth / 2,
-                mBlackPaint
-            )
+            val radius = width / 2f - mBlackPaint.strokeWidth / 2
+            drawCircle(width / 2f, height / 2f, radius, mBlackPaint)
             // 画刻度
             save()
             for (i in 0..60) {
@@ -79,18 +79,33 @@ class ClockView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
                 // 画刻度
                 drawLine(width / 2f, 0f, width / 2f, length, mBlackPaint)
                 // 画时间文字，这里导致的结果是数字也会旋转
-                if (i % 5 == 0 && i != 0) {
-                    val text = i / 5
-                    Log.e(TAG, "onDraw: $text")
-                    mBlackPaint.strokeWidth = 1f
-                    mBlackPaint.textSize = 15f
-                    mBlackPaint.textAlign = Paint.Align.CENTER
-                    drawText(text.toString(), width / 2f, 30f, mBlackPaint)
-                }
+//                if (i % 5 == 0 && i != 0) {
+//                    val text = i / 5
+//                    Log.e(TAG, "onDraw: $text")
+//                    mBlackPaint.strokeWidth = 1f
+//                    mBlackPaint.textSize = 15f
+//                    mBlackPaint.textAlign = Paint.Align.CENTER
+//                    drawText(text.toString(), width / 2f, 30f, mBlackPaint)
+//                }
                 // 画布旋转一刻度的角度值
                 rotate(360 / 60f, width / 2f, height / 2f)
             }
             restore()
+            // 画时间文字，不会翻转
+            val textRadius = radius - 50
+            mBlackPaint.strokeWidth = 1f
+            mBlackPaint.textSize = 15f
+            mBlackPaint.textAlign = Paint.Align.CENTER
+            for (i in 1..12) {
+                val text = i.toString()
+                val measureText = mBlackPaint.measureText(text)
+                val textX =
+                    width / 2f + textRadius * sin(30 * i * Math.PI / 180f)
+                val textY =
+                    height / 2f - textRadius * cos(30 * i * Math.PI / 180f) + measureText / 2f
+                drawText(text, textX.toFloat(), textY.toFloat(), mBlackPaint)
+            }
+
             // 画指针
             val hour = Calendar.getInstance().get(Calendar.HOUR)
             val minute = Calendar.getInstance().get(Calendar.MINUTE)
