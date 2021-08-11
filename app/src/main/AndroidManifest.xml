@@ -36,7 +36,7 @@
         <!-- <activity android:name=".opengles.OpenGlActivity"/> -->
         <!-- <activity android:name=".countdown.CountDownTimerActivity"/> -->
         <activity
-            android:name=".window.WindowManagerActivity"
+            android:name=".widget.CanvasActivity"
             android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
