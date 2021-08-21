@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".materialdesign.transition.TransitionActivityA">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="explode"
+        android:text="explode" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="slide"
+        android:text="slide" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="fade"
+        android:text="fade" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="share"
+        android:text="share"
+        android:transitionName="share" />
+
+    <Button
+        android:id="@+id/fab_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="fab"
+        android:transitionName="fab" />
+
+
+</LinearLayout>
