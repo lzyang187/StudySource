@@ -8,32 +8,124 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:layout_width="200dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:elevation="10dp"
         app:cardBackgroundColor="@color/colorAccent"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="5dp"
-        app:cardMaxElevation="10dp"
-        app:contentPaddingLeft="30dp"
-        app:contentPaddingRight="20dp"
-        app:contentPaddingTop="10dp"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@mipmap/biz_user_homepage_top_bg" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CardView的属性,用法、含义等等等多多多多多多多多" />
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="CardView的属性,用法、含义等" />
 
     </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/elevation_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/card_view">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/bg_rect"
+            android:elevation="2dp" />
+
+        <TextView
+            android:id="@+id/elevation_tv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/bg_rect"
+            android:elevation="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tinting_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/elevation_layout">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_launcher"
+            android:elevation="10dp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_launcher"
+            android:elevation="10dp"
+            android:tint="@android:color/holo_blue_bright" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_launcher"
+            android:elevation="10dp"
+            android:tint="@android:color/holo_blue_bright"
+            android:tintMode="add" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_launcher"
+            android:elevation="10dp"
+            android:tint="@android:color/holo_blue_bright"
+            android:tintMode="multiply" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/clipping_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tinting_layout">
+
+        <TextView
+            android:id="@+id/clipping_tv_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/bg_rect"
+            android:elevation="10dp" />
+
+        <TextView
+            android:id="@+id/clipping_tv_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/bg_rect"
+            android:elevation="10dp" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
