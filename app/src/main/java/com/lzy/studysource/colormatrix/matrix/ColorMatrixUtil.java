@@ -1,4 +1,4 @@
-package com.lzy.studysource.colormatrix;
+package com.lzy.studysource.colormatrix.matrix;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,6 +12,9 @@ import android.graphics.Paint;
  */
 public class ColorMatrixUtil {
 
+    /**
+     * 处理图片的色调、饱和度、亮度
+     */
     public static Bitmap handleImage(Bitmap bitmap, float rotate, float saturation, float scale) {
         //创建副本，不会影响原图，Android也不允许直接修改原图
         Bitmap bmp = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
@@ -40,17 +43,8 @@ public class ColorMatrixUtil {
         imageMatrix.postConcat(scaleMatrix);
 
         paint.setColorFilter(new ColorMatrixColorFilter(imageMatrix));
-        canvas.drawBitmap(bmp, 0, 0, paint);
+        canvas.drawBitmap(bitmap, 0, 0, paint);
         return bmp;
     }
 
-    public static Bitmap handleImage(Bitmap bitmap, float[] filter) {
-        Bitmap bmp = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bmp);
-        Paint paint = new Paint();
-//
-//        paint.setColorFilter(new ColorMatrixColorFilter(filter));
-        canvas.drawBitmap(bmp, 0, 0, paint);
-        return bmp;
-    }
 }

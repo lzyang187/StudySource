@@ -21,4 +21,8 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="RoundImageView">
+        <attr name="bg" format="reference" />
+    </declare-styleable>
+
 </resources>

@@ -111,8 +111,17 @@
     <com.lzy.studysource.widget.custom.LayerView
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:visibility="gone"
         custom1:layout_constraintStart_toStartOf="parent"
         custom1:layout_constraintTop_toTopOf="parent" />
 
+    <com.lzy.studysource.widget.xfermode.RoundImageView
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        custom1:bg="@mipmap/test_filter"
+        custom1:layout_constraintStart_toStartOf="parent"
+        custom1:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

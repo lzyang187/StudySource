@@ -13,12 +13,12 @@ import com.lzy.studysource.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ColorMatrixActivity extends AppCompatActivity {
+public class ColorMatrixListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_color_matrix);
+        setContentView(R.layout.activity_color_matrix_list);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);

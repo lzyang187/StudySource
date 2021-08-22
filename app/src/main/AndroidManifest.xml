@@ -28,7 +28,7 @@
             android:name=".materialdesign.transition.TransitionActivityB"
             android:exported="true" />
         <activity
-            android:name=".materialdesign.transition.TransitionActivityA"
+            android:name=".widget.CanvasActivity"
             android:configChanges="orientation|keyboardHidden"
             android:hardwareAccelerated="true">
             <intent-filter>
