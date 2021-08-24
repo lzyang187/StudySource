@@ -28,11 +28,20 @@ class ShaderRoundImageView(context: Context?, attrs: AttributeSet?, defStyleAttr
             val bgResId = typedArray.getResourceId(R.styleable.RoundImageView_bg, 0)
             typedArray.recycle()
             mSrcBitmap = BitmapFactory.decodeResource(resources, bgResId)
+            // BitmapShader的用法
 //            val bitmapShader =
 //                BitmapShader(mSrcBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
-            val bitmapShader =
-                BitmapShader(mSrcBitmap, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR)
-            mPaint.setShader(bitmapShader)
+//            val bitmapShader =
+//                BitmapShader(mSrcBitmap, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR)
+//            mPaint.setShader(bitmapShader)
+
+            // LinearGradient的用法。是一个从（0，0）到（100，100）由蓝渐变到黄的效果
+            val linearGradient =
+                LinearGradient(
+                    0f, 0f, 100f, 100f,
+                    Color.BLUE, Color.YELLOW, Shader.TileMode.REPEAT
+                )
+            mPaint.setShader(linearGradient)
 
         }
     }
