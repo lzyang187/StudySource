@@ -147,8 +147,21 @@
         android:layout_height="213dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:visibility="visible"
+        android:visibility="gone"
         custom1:bg="@mipmap/ic_android"
+        custom1:layout_constraintStart_toStartOf="parent"
+        custom1:layout_constraintTop_toTopOf="parent" />
+
+    <com.lzy.studysource.widget.shader.ReflectView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        custom1:layout_constraintStart_toStartOf="parent"
+        custom1:layout_constraintTop_toTopOf="parent" />
+
+    <com.lzy.studysource.widget.SinSurfaceView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         custom1:layout_constraintStart_toStartOf="parent"
         custom1:layout_constraintTop_toTopOf="parent" />
 

@@ -39,7 +39,7 @@ class ShaderRoundImageView(context: Context?, attrs: AttributeSet?, defStyleAttr
             val linearGradient =
                 LinearGradient(
                     0f, 0f, 100f, 100f,
-                    Color.BLUE, Color.YELLOW, Shader.TileMode.REPEAT
+                    Color.BLUE, Color.YELLOW, Shader.TileMode.CLAMP
                 )
             mPaint.setShader(linearGradient)
 
@@ -49,7 +49,8 @@ class ShaderRoundImageView(context: Context?, attrs: AttributeSet?, defStyleAttr
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         canvas?.let {
-            it.drawCircle(width / 2f, height / 2f, width / 2f, mPaint)
+//            it.drawCircle(width / 2f, height / 2f, width / 2f, mPaint)
+            it.drawRect(0f, 0f, width.toFloat(), height.toFloat(), mPaint)
         }
     }
 
