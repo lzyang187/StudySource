@@ -16,26 +16,34 @@ public class MyGLRender implements GLSurfaceView.Renderer {
     private Triangle mTriangle;
     private Square mSquare;
 
+    /**
+     * 系统会在创建 GLSurfaceView 时调用一次此方法。使用此方法可执行仅需发生一次的操作，例如设置 OpenGL 环境参数或初始化 OpenGL 图形对象
+     */
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         // initialize a triangle
         mTriangle = new Triangle();
         // initialize a square
         mSquare = new Square();
-        // 系统会在创建 GLSurfaceView 时调用一次此方法。使用此方法可执行仅需发生一次的操作，例如设置 OpenGL 环境参数或初始化 OpenGL 图形对象
+        // 设置清空屏幕用的颜色
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     }
 
+    /**
+     * 系统会在 GLSurfaceView 几何图形发生变化（包括 GLSurfaceView 大小发生变化或设备屏幕方向发生变化）时调用此方法
+     */
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        // 系统会在 GLSurfaceView 几何图形发生变化（包括 GLSurfaceView 大小发生变化或设备屏幕方向发生变化）时调用此方法
+        // 设置视图尺寸，告诉OpenGL可以用来渲染的surface的大小
         gl.glViewport(0, 0, width, height);
     }
 
 
+    /**
+     * 系统会在每次重新绘制 GLSurfaceView 时调用此方法。请将此方法作为绘制（和重新绘制）图形对象的主要执行点
+     */
     @Override
     public void onDrawFrame(GL10 gl) {
-        // 系统会在每次重新绘制 GLSurfaceView 时调用此方法。请将此方法作为绘制（和重新绘制）图形对象的主要执行点
         mTriangle.draw();
     }
 

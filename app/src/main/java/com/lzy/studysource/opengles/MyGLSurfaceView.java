@@ -13,7 +13,7 @@ import android.util.AttributeSet;
  */
 public class MyGLSurfaceView extends GLSurfaceView {
 
-    private final MyGLRender render;
+    private final AirHockeyRenderer render;
 
     public MyGLSurfaceView(Context context) {
         this(context, null);
@@ -24,7 +24,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
         // Create an OpenGL ES 2.0 context
         setEGLContextClientVersion(2);
 
-        render = new MyGLRender();
+        render = new AirHockeyRenderer(context);
         // Set the Renderer for drawing on the GLSurfaceView
         setRenderer(render);
 
