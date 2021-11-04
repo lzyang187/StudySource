@@ -34,22 +34,22 @@ class AirHockeyRenderer(private val mContext: Context) : GLSurfaceView.Renderer 
     // 两个三角形组成的长方形桌子的顶点
     private val mTableVerticesWithTriangles = floatArrayOf(
         // 第一个三角形，逆时针排列
-        0f, 0f,
-        9f, 14f,
-        0f, 14f,
+        -0.5f, -0.5f,
+        0.5f, 0.5f,
+        -0.5f, 0.5f,
 
         // 第二个三角形
-        0f, 0f,
-        9f, 0f,
-        9f, 14f,
+        -0.5f, -0.5f,
+        0.5f, -0.5f,
+        0.5f, 0.5f,
 
         // 中间线
-        0f, 7f,
-        9f, 7f,
+        -0.5f, 0f,
+        0.5f, 0f,
 
         // 两个木槌，用两个点代替
-        4.5f, 2f,
-        4.5f, 12f,
+        0f, -0.25f,
+        0f, 0.25f,
     )
 
     // OpenGL作为本地系统库直接运行在硬件上，没有虚拟机、垃圾回收器，所以需要把内存从Java堆复制到本地堆
@@ -69,7 +69,7 @@ class AirHockeyRenderer(private val mContext: Context) : GLSurfaceView.Renderer 
 
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
-        GLES20.glClearColor(1.0f, 0.0f, 0.0f, 0.0f)
+        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f)
         val vertexShaderSource =
             TextResourceRender.readTextFileFromResource(mContext, R.raw.simple_vertex_shader)
         Log.d(TAG, "onSurfaceCreated: vertexShaderSource = $vertexShaderSource")
@@ -94,6 +94,8 @@ class AirHockeyRenderer(private val mContext: Context) : GLSurfaceView.Renderer 
             mAPositionLocation, POSITION_COMPONENT_COUNT, GLES20.GL_FLOAT,
             false, 0, mVertexData
         )
+        // 使能顶点数组
+        GLES20.glEnableVertexAttribArray(mAPositionLocation)
     }
 
 
@@ -103,6 +105,23 @@ class AirHockeyRenderer(private val mContext: Context) : GLSurfaceView.Renderer 
 
     override fun onDrawFrame(gl: GL10?) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)
+        // 绘制桌子部分
+        // 更新着色器代码中的u_Color值，这里是白色
+        GLES20.glUniform4f(mUColorLocation, 1.0f, 1.0f, 1.0f, 1.0f)
+        // 告诉OpenGL我们要画三角形，使用顶点数组索引为0到5共六个顶点，这里会画两个三角形
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 6)
+        // 绘制中间线部分，这里是红色
+        GLES20.glUniform4f(mUColorLocation, 1.0f, 0.0f, 0.0f, 1.0f)
+        // 画线
+        GLES20.glDrawArrays(GLES20.GL_LINES, 6, 2)
+        // 绘制连个木槌点
+        // 绘制第一个木槌点，蓝色
+        GLES20.glUniform4f(mUColorLocation, 0.0f, 0.0f, 1.0f, 1.0f)
+        // 画点
+        GLES20.glDrawArrays(GLES20.GL_POINTS, 8, 1)
+        // 绘制第二个木槌点，红色
+        GLES20.glUniform4f(mUColorLocation, 1.0f, 0.0f, 0.0f, 1.0f)
+        GLES20.glDrawArrays(GLES20.GL_POINTS, 9, 1)
 
     }
 }
