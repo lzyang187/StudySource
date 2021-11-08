@@ -1,8 +1,9 @@
-package com.lzy.studysource.opengles
+package com.lzy.studysource.opengles.airhockey
 
 import android.content.Context
 import android.opengl.GLES20
 import android.opengl.GLSurfaceView
+import android.opengl.Matrix
 import android.util.Log
 import com.lzy.studysource.R
 import com.lzy.studysource.opengles.util.ShaderHelper
@@ -33,6 +34,7 @@ class AirHockeyRenderer(private val mContext: Context) : GLSurfaceView.Renderer 
 
         private const val A_POSITION = "a_Position"
         private const val A_COLOR = "a_Color"
+        private const val U_MATRIX = "u_Matrix"
 
         // 跨距，告诉OpenGL每个位置之间有多少个字节
         private const val STRIDE =
@@ -53,20 +55,28 @@ class AirHockeyRenderer(private val mContext: Context) : GLSurfaceView.Renderer 
 
         // 三角形扇的方式
         // x, y, r, g, b
+//        0f, 0f, 1f, 1f, 1f,
+//        -0.5f, -0.5f, 0.7f, 0.7f, 0.7f,
+//        0.5f, -0.5f, 0.7f, 0.7f, 0.7f,
+//        0.5f, 0.5f, 0.7f, 0.7f, 0.7f,
+//        -0.5f, 0.5f, 0.7f, 0.7f, 0.7f,
+//        -0.5f, -0.5f, 0.7f, 0.7f, 0.7f,
+
+        // 适配横屏后，需要使桌子高度变高，只更新y的位置（第二列）
         0f, 0f, 1f, 1f, 1f,
-        -0.5f, -0.5f, 0.7f, 0.7f, 0.7f,
-        0.5f, -0.5f, 0.7f, 0.7f, 0.7f,
-        0.5f, 0.5f, 0.7f, 0.7f, 0.7f,
-        -0.5f, 0.5f, 0.7f, 0.7f, 0.7f,
-        -0.5f, -0.5f, 0.7f, 0.7f, 0.7f,
+        -0.5f, -0.8f, 0.7f, 0.7f, 0.7f,
+        0.5f, -0.8f, 0.7f, 0.7f, 0.7f,
+        0.5f, 0.8f, 0.7f, 0.7f, 0.7f,
+        -0.5f, 0.8f, 0.7f, 0.7f, 0.7f,
+        -0.5f, -0.8f, 0.7f, 0.7f, 0.7f,
 
         // 中间线
         -0.5f, 0f, 1f, 0f, 0f,
         0.5f, 0f, 0f, 0f, 1f,
 
         // 两个木槌，用两个点代替
-        0f, -0.25f, 0f, 0f, 1f,
-        0f, 0.25f, 1f, 0f, 0f
+        0f, -0.4f, 0f, 0f, 1f,
+        0f, 0.4f, 1f, 0f, 0f
     )
 
     // OpenGL作为本地系统库直接运行在硬件上，没有虚拟机、垃圾回收器，所以需要把内存从Java堆复制到本地堆
@@ -83,7 +93,8 @@ class AirHockeyRenderer(private val mContext: Context) : GLSurfaceView.Renderer 
     private var mProgramId = 0
     private var mAPositionLocation = 0
     private var mAColorLocation = 0
-
+    private val mProjectionMatrix = FloatArray(16)
+    private var mUMatrixLocation = 0
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f)
@@ -124,11 +135,23 @@ class AirHockeyRenderer(private val mContext: Context) : GLSurfaceView.Renderer 
         )
         // 为颜色属性使能顶点属性数组
         GLES20.glEnableVertexAttribArray(mAColorLocation)
+
+        // 把正交投影矩阵和顶点着色器的u_Matrix关联起来
+        mUMatrixLocation = GLES20.glGetUniformLocation(mProgramId, U_MATRIX)
     }
 
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
         GLES20.glViewport(0, 0, width, height)
+        val aspectRatio =
+            if (width > height) width.toFloat() / height.toFloat() else height.toFloat() / width.toFloat()
+        if (width > height) {
+            // 横屏，正交投影，扩展宽度的坐标空间，保持高度在-1到1的范围
+            Matrix.orthoM(mProjectionMatrix, 0, -aspectRatio, aspectRatio, -1f, 1f, -1f, 1f)
+        } else {
+            // 竖屏或者是方屏，正交投影，扩展高度的坐标空间，保持宽度在-1到1的范围
+            Matrix.orthoM(mProjectionMatrix, 0, -1f, 1f, -aspectRatio, aspectRatio, -1f, 1f)
+        }
     }
 
     override fun onDrawFrame(gl: GL10?) {
@@ -151,6 +174,7 @@ class AirHockeyRenderer(private val mContext: Context) : GLSurfaceView.Renderer 
         // 绘制第二个木槌点，红色
 //        GLES20.glUniform4f(mUColorLocation, 1.0f, 0.0f, 0.0f, 1.0f)
         GLES20.glDrawArrays(GLES20.GL_POINTS, 9, 1)
-
+        // 传递矩阵给顶点着色器
+        GLES20.glUniformMatrix4fv(mUMatrixLocation, 1, false, mProjectionMatrix, 0)
     }
 }

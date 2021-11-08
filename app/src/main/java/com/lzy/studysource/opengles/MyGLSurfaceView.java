@@ -4,6 +4,8 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
+import com.lzy.studysource.opengles.airhockey.AirHockeyRenderer;
+
 /**
  * GLSurfaceView 是一种专用视图，您可以在其中绘制 OpenGL ES 图形。
  * 它本身并没有很大的作用。对象的实际绘制由您在此视图中设置的 GLSurfaceView.Renderer 控制。
