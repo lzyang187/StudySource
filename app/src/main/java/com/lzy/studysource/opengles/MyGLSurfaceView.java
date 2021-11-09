@@ -4,6 +4,7 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
+import com.lzy.studysource.opengles.airhockey.AirHockey3DRenderer;
 import com.lzy.studysource.opengles.airhockey.AirHockeyRenderer;
 
 /**
@@ -15,7 +16,7 @@ import com.lzy.studysource.opengles.airhockey.AirHockeyRenderer;
  */
 public class MyGLSurfaceView extends GLSurfaceView {
 
-    private final AirHockeyRenderer render;
+    private final AirHockey3DRenderer render;
 
     public MyGLSurfaceView(Context context) {
         this(context, null);
@@ -26,7 +27,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
         // Create an OpenGL ES 2.0 context
         setEGLContextClientVersion(2);
 
-        render = new AirHockeyRenderer(context);
+        render = new AirHockey3DRenderer(context);
         // Set the Renderer for drawing on the GLSurfaceView
         setRenderer(render);
 
