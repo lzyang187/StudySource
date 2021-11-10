@@ -11,6 +11,12 @@ import android.util.Log
 object ShaderHelper {
     private const val TAG = "ShaderHelper"
 
+    fun buildProgram(vertexShaderCode: String, fragmentShaderCode: String): Int {
+        val vertexShader = compileVertexShader(vertexShaderCode)
+        val fragmentShader = compileFragmentShader(fragmentShaderCode)
+        return linkProgram(vertexShader, fragmentShader)
+    }
+
     fun compileVertexShader(shaderCode: String): Int {
         return compileShader(GLES20.GL_VERTEX_SHADER, shaderCode)
     }
