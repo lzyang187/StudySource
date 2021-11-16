@@ -9,6 +9,7 @@ import com.lzy.studysource.opengles.airhockey.objects.Mallet
 import com.lzy.studysource.opengles.airhockey.objects.Table
 import com.lzy.studysource.opengles.airhockey.programs.ColorShaderProgram
 import com.lzy.studysource.opengles.airhockey.programs.TextureShaderProgram
+import com.lzy.studysource.opengles.util.BitmapLoaderFromResource
 import com.lzy.studysource.opengles.util.TextureHelper
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
@@ -40,7 +41,12 @@ class AirHockeyTextureRender(private val mContext: Context) : GLSurfaceView.Rend
         mMallet = Mallet()
         mTextureProgram = TextureShaderProgram(mContext)
         mColorShaderProgram = ColorShaderProgram(mContext)
-        mTexture = TextureHelper.loadTexture(mContext, R.drawable.air_hockey_surface)
+        mTexture = TextureHelper.loadTexture(
+            BitmapLoaderFromResource(
+                mContext,
+                R.drawable.air_hockey_surface
+            )
+        )
     }
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {

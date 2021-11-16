@@ -30,7 +30,8 @@
         <activity
             android:name=".opengles.OpenGlActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:hardwareAccelerated="true">
+            android:hardwareAccelerated="true"
+            android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

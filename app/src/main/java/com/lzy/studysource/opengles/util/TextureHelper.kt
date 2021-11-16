@@ -1,7 +1,5 @@
 package com.lzy.studysource.opengles.util
 
-import android.content.Context
-import android.graphics.BitmapFactory
 import android.opengl.GLES20
 import android.opengl.GLUtils
 import android.util.Log
@@ -17,7 +15,7 @@ object TextureHelper {
     /**
      * 从资源中读入文件，并把图形数据加载进OpenGL
      */
-    fun loadTexture(context: Context, resourceId: Int): Int {
+    fun loadTexture(bitmapLoader: IBitmapLoader): Int {
         val textureObjectIds = IntArray(1)
         // 创建一个纹理对象，
         GLES20.glGenTextures(1, textureObjectIds, 0)
@@ -26,10 +24,7 @@ object TextureHelper {
             return 0
         }
         // 加载位图
-        val options = BitmapFactory.Options()
-        // 要原始数据，而不是缩放版本
-        options.inScaled = false
-        val bitmap = BitmapFactory.decodeResource(context.resources, resourceId, options)
+        val bitmap = bitmapLoader.loadBitmap()
         if (bitmap == null) {
             Log.e(TAG, "loadTexture: 图片资源无法加载")
             // 删除纹理对象
@@ -41,9 +36,7 @@ object TextureHelper {
         // 设置默认的纹理过滤参数
         // 缩小的情况，使用三线性过滤GL_LINEAR_MIPMAP_LINEAR
         GLES20.glTexParameteri(
-            GLES20.GL_TEXTURE_2D,
-            GLES20.GL_TEXTURE_MIN_FILTER,
-            GLES20.GL_LINEAR_MIPMAP_LINEAR
+            GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_LINEAR_MIPMAP_LINEAR
         )
         // 放大的情况，使用双线性过滤GL_LINEAR
         GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR)
