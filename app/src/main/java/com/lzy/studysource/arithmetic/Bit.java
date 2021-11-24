@@ -25,5 +25,28 @@ public class Bit {
         return (num & (num - 1)) == 0;
     }
 
+    /**
+     * 几种状态的检查
+     */
+    public static void checkStatus() {
+        int state1 = 0b001;
+        int state2 = 0b010;
+        int state3 = 0b100;
+        int result = 0b000;
+        result = result | state1;
+        System.out.println("state1完成了 = " + ((result & state1) == state1));
+        System.out.println("state2完成了 = " + ((result & state2) == state2));
+        result = result | state2;
+        System.out.println("state2完成了 = " + ((result & state2) == state2));
+        result = result & (~state2);
+        System.out.println("state2完成了 = " + ((result & state2) == state2));
+        result = result | state2;
+        result = result | state3;
+        System.out.println("都完成了 = " +
+                ((result & state1) == state1 &&
+                        (result & state2) == state2 &&
+                        (result & state3) == state3));
+
+    }
 
 }

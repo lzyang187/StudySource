@@ -1,5 +1,7 @@
 package com.lzy.studysource.bit;
 
+import com.lzy.studysource.arithmetic.Bit;
+
 /**
  * @author: cyli8
  * @date: 2018/11/18 09:55
@@ -15,5 +17,7 @@ public class BitTest {
         System.out.println("0x00a=" + 0x00a);
         System.out.println("0b001=" + (short) 0b001);
         System.out.println("0b011=" + (short) 0b011);
+
+        Bit.checkStatus();
     }
 }
