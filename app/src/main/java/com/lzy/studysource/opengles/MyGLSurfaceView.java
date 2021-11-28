@@ -4,7 +4,8 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
-import com.lzy.studysource.opengles.smartbook.SmartBookTextureRender;
+import com.lzy.studysource.opengles.airhockey.AirHockeyBatterMalletsRender;
+import com.lzy.studysource.opengles.airhockey.AirHockeyTextureRender;
 
 /**
  * GLSurfaceView 是一种专用视图，您可以在其中绘制 OpenGL ES 图形。
@@ -15,7 +16,7 @@ import com.lzy.studysource.opengles.smartbook.SmartBookTextureRender;
  */
 public class MyGLSurfaceView extends GLSurfaceView {
 
-    private final SmartBookTextureRender render;
+    private final AirHockeyBatterMalletsRender render;
 
     public MyGLSurfaceView(Context context) {
         this(context, null);
@@ -26,7 +27,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
         // Create an OpenGL ES 2.0 context
         setEGLContextClientVersion(2);
 
-        render = new SmartBookTextureRender(context);
+        render = new AirHockeyBatterMalletsRender(context);
         // Set the Renderer for drawing on the GLSurfaceView
         setRenderer(render);
 
