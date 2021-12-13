@@ -22,6 +22,7 @@ class RemoteService : Service() {
             // 通知变化
             val size = mRemoteCallbackList.beginBroadcast()
             for (i in 0 until size) {
+                // 远程实现是运行在Binder线程池中的，同时客户端线程会挂起，所以如果是耗时操作，应该运行在子线程中
                 mRemoteCallbackList.getBroadcastItem(i).onNewStudent(student)
             }
 

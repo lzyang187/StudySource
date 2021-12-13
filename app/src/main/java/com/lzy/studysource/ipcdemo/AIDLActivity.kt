@@ -34,7 +34,10 @@ class AIDLActivity : AppCompatActivity() {
             val studentList = mStudentManager?.studentList
             resultTv.text = "查询结果: $studentList"
         }
+        bindService()
+    }
 
+    private fun bindService() {
         val intent = Intent(this, RemoteService::class.java)
         bindService(intent, mConnection, Service.BIND_AUTO_CREATE)
     }
@@ -44,6 +47,8 @@ class AIDLActivity : AppCompatActivity() {
             Log.e(TAG, "onServiceConnected: ")
             mStudentManager = IStudentManager.Stub.asInterface(service)
             mStudentManager?.registerListener(mListener)
+            // 给binder设置死亡代理
+            service?.linkToDeath(mDeathRecipient, 0)
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
@@ -56,6 +61,17 @@ class AIDLActivity : AppCompatActivity() {
     private val mListener = object : IStudentListener.Stub() {
         override fun onNewStudent(student: Student?) {
             Log.e(TAG, "onNewStudent: $student")
+        }
+    }
+
+    private val mDeathRecipient = IBinder.DeathRecipient { onDied() }
+
+    private fun onDied() {
+        mStudentManager?.let {
+            it.asBinder().unlinkToDeath(mDeathRecipient, 0)
+            mStudentManager = null
+            // 重新绑定远程服务
+            bindService()
         }
     }
 
