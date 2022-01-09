@@ -46,5 +46,15 @@ public class Test {
         System.out.println("\\");
         System.out.println("\"");
 
+        Bean bean = new Bean("aa", 18);
+        System.out.println(bean);
+        try {
+            Bean clone = bean.clone();
+            System.out.println(clone);
+
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @author: cyli8
  * @date: 2018/6/25 10:34
  */
-public class Bean implements Serializable {
+public class Bean implements Serializable,Cloneable {
     private static final long serialVersionUID = 1L;
 
     public String name;
@@ -18,7 +18,8 @@ public class Bean implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "age = " + age;
+    protected Bean clone() throws CloneNotSupportedException {
+        return (Bean) super.clone();
     }
+
 }
