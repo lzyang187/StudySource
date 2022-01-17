@@ -71,5 +71,35 @@ public class Test {
         System.out.println(i7.equals(i8));
 
 
+        Bean bean = new Bean("aa", 18);
+        System.out.println(bean);
+        try {
+            Bean clone = bean.clone();
+            System.out.println(clone);
+
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        integerFun();
+    }
+
+    /**
+     * 自动装箱的陷阱。包装类的"=="在不遇到算术运算的情况下不自动拆箱，以及equals()方法不处理数据转换的关系
+     */
+    public static void integerFun() {
+        Integer a = 1;
+        Integer b = 2;
+        Integer c = 3;
+        Integer d = 3;
+        Integer e = 321;
+        Integer f = 321;
+        Long g = 3L;
+        System.out.println(c == d);
+        System.out.println(e == f);
+        System.out.println(c == (a + b));
+        System.out.println(c.equals(a + b));
+        System.out.println(g == (a + b));
+        System.out.println(g.equals(a + b));
     }
 }
