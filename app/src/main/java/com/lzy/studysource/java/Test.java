@@ -1,5 +1,8 @@
 package com.lzy.studysource.java;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author: cyli8
  * @date: 2018/6/25 10:35
@@ -82,6 +85,14 @@ public class Test {
         }
 
         integerFun();
+
+        /**
+         * java的泛型是非型变的
+         */
+//        List<String> strings = new ArrayList<>();
+//        List<Object> objects = strings;
+
+
     }
 
     /**
