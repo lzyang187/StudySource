@@ -12,6 +12,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> <!-- 为了让您的应用使用 OpenGL ES 2.0 API，您必须将以下声明添加到清单中 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -25,13 +28,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".sqlite.SQLiteActivity"
+            android:name=".contentprovider.ReadContentActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".sqlite.SQLiteActivity"
+            android:exported="true">
+
         </activity>
 
         <service
@@ -47,9 +55,7 @@
             android:name=".ipcdemo.AIDLActivity"
             android:configChanges="orientation|keyboardHidden"
             android:hardwareAccelerated="true"
-            android:theme="@style/FullScreenTheme">
-
-        </activity>
+            android:theme="@style/FullScreenTheme"></activity>
         <activity
             android:name=".lockscreen.ScreenActivity"
             android:launchMode="singleInstance"
