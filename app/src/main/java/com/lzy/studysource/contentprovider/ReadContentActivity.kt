@@ -1,8 +1,10 @@
 package com.lzy.studysource.contentprovider
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.lzy.studysource.R
 
@@ -10,8 +12,22 @@ class ReadContentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_read_content)
-
-        readContacts()
+        findViewById<Button>(R.id.query_btn).setOnClickListener {
+            readContacts()
+        }
+        findViewById<Button>(R.id.insert_contact).setOnClickListener {
+//            // 修改联系人
+//            val contentValues = ContentValues()
+//            contentValues.put(ContactsContract.CommonDataKinds.Phone.NUMBER, "13205693712")
+//            val rows = contentResolver.update(
+//                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+//                contentValues,
+//                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " = ?",
+//                arrayOf("Hhhh")
+//            )
+//            Log.e(TAG, "update return: $rows")
+            insertContacts()
+        }
     }
 
     private fun readContacts() {
@@ -31,6 +47,19 @@ class ReadContentActivity : AppCompatActivity() {
             cursor.close()
         }
 
+    }
+
+    /**
+     * 会闪退
+     */
+    private fun insertContacts() {
+        val contentValues = ContentValues()
+        contentValues.put(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, "新增1")
+        contentValues.put(ContactsContract.CommonDataKinds.Phone.NUMBER, "110")
+        val uri = contentResolver.insert(
+            ContactsContract.CommonDataKinds.Phone.CONTENT_URI, contentValues
+        )
+        Log.e(TAG, "insertContacts: $uri")
     }
 
     companion object {

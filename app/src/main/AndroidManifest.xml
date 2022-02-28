@@ -27,6 +27,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name=".contentprovider.MyContentProvider"
+            android:authorities="com.lzy.studysource.provider"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name=".contentprovider.ReadContentActivity"
             android:exported="true">
@@ -38,9 +44,7 @@
         </activity>
         <activity
             android:name=".sqlite.SQLiteActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
 
         <service
             android:name=".ipcdemo.RemoteService"
@@ -55,7 +59,7 @@
             android:name=".ipcdemo.AIDLActivity"
             android:configChanges="orientation|keyboardHidden"
             android:hardwareAccelerated="true"
-            android:theme="@style/FullScreenTheme"></activity>
+            android:theme="@style/FullScreenTheme" />
         <activity
             android:name=".lockscreen.ScreenActivity"
             android:launchMode="singleInstance"
