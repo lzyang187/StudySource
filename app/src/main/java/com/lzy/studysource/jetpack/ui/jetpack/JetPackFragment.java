@@ -36,14 +36,14 @@ public class JetPackFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(JetPackViewModel.class);
-        mViewModel.getUsers().observe(this, new Observer<List<User>>() {
+        mViewModel.getUsers().observe(requireActivity(), new Observer<List<User>>() {
             @Override
             public void onChanged(@Nullable List<User> users) {
                 Log.d(TAG, "onChanged: " + users.get(0).name);
             }
         });
 
-        mViewModel.getSelected().observe(this, new Observer<User>() {
+        mViewModel.getSelected().observe(requireActivity(), new Observer<User>() {
             @Override
             public void onChanged(@Nullable User user) {
                 Log.d(TAG, "onChanged: " + user.name);

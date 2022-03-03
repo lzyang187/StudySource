@@ -53,7 +53,7 @@ public class WorkManagerActivity extends AppCompatActivity {
                 .addTag("tag")
                 //设置输入合并类型
                 //为了管理来自多个父任务的输入，WorkManager使用InputMerger进行输入合并。
-                .setInputMerger(ArrayCreatingInputMerger.class)
+//                .setInputMerger(ArrayCreatingInputMerger.class)
                 .build();
 
         //创建重复执行的任务
@@ -84,15 +84,15 @@ public class WorkManagerActivity extends AppCompatActivity {
 //        });
 
         //5、终止任务
-        WorkManager.getInstance(MyApplication.getInstance()).cancelWorkById(compressWorkRequest.getId());
+//        WorkManager.getInstance(MyApplication.getInstance()).cancelWorkById(compressWorkRequest.getId());
 
         //链接任务
-        WorkContinuation workContinuation = WorkManager.getInstance(MyApplication.getInstance()).beginWith(compressWorkRequest);
-        OneTimeWorkRequest.Builder builder = new OneTimeWorkRequest.Builder(ChainWorker.class);
-        Operation enqueue = workContinuation
-                .then(builder.build())
-                .then(builder.build())
-                .enqueue();
+//        WorkContinuation workContinuation = WorkManager.getInstance(MyApplication.getInstance()).beginWith(compressWorkRequest);
+//        OneTimeWorkRequest.Builder builder = new OneTimeWorkRequest.Builder(ChainWorker.class);
+//        Operation enqueue = workContinuation
+//                .then(builder.build())
+//                .then(builder.build())
+//                .enqueue();
 
     }
 
