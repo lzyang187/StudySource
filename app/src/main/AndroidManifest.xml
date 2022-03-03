@@ -33,12 +33,28 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".jetpack.workmanager.WorkManagerActivity">
+        <activity android:name=".materialdesign.CoordinatorLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".materialdesign.CoordinatorViewPagerActivity">
+
+        </activity>
+
+        <activity android:name=".materialdesign.CardViewActivity">
+
+        </activity>
+
+        <activity android:name=".materialdesign.transition.TransitionActivityA">
+
+        </activity>
+
+        <activity android:name=".jetpack.workmanager.WorkManagerActivity">
+
         </activity>
 
         <activity android:name=".jetpack.camerax.CameraXActivity">
