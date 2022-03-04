@@ -33,12 +33,16 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".materialdesign.CoordinatorLayoutActivity">
+        <activity android:name=".toolbar.ToolbarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".materialdesign.CoordinatorLayoutActivity">
+
         </activity>
 
         <activity android:name=".materialdesign.CoordinatorViewPagerActivity">

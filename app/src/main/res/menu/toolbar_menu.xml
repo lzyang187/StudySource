@@ -7,19 +7,25 @@
         android:title="搜索"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/action_notification"
-        android:icon="@mipmap/ic_notifications"
-        android:title="通知"
-        app:showAsAction="never" />
 
     <item
         android:id="@+id/item_1"
         android:title="item1"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/item_2"
-        android:title="item2"
-        app:showAsAction="never" />
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/action_notification"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@mipmap/ic_notifications"
+            android:title="通知"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/item_2"
+            android:checkable="true"
+            android:title="item2"
+            app:showAsAction="never" />
+    </group>
+
 </menu>
