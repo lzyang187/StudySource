@@ -34,7 +34,7 @@ ext {
     //android配置的一些常量
     minSdkVersion = 21
     compileSdkVersion = 28
-    targetSdkVersion = 22
+    targetSdkVersion = 25
     versionCode = 1
     versionName = "1"
 }
