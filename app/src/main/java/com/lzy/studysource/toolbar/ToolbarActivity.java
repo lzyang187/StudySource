@@ -1,5 +1,7 @@
 package com.lzy.studysource.toolbar;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -13,8 +15,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.pm.ShortcutInfoCompat;
+import androidx.core.content.pm.ShortcutManagerCompat;
+import androidx.core.graphics.drawable.IconCompat;
 
 import com.lzy.studysource.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ToolbarActivity extends AppCompatActivity {
     private static final String TAG = "ToolbarActivity";
@@ -119,6 +127,49 @@ public class ToolbarActivity extends AppCompatActivity {
             }
             popupMenu.show();
         });
+
+        Intent intent = new Intent();
+        intent.setAction("dynamic_short_cut");
+        intent.setPackage(getPackageName());
+        findViewById(R.id.shortcut).setOnClickListener(v -> {
+            ShortcutInfoCompat shortcutInfoCompat = new ShortcutInfoCompat.Builder(ToolbarActivity.this, "id")
+                    .setShortLabel("ShortLabel")
+                    .setLongLabel("LongLabel")
+                    .setIcon(IconCompat.createWithResource(ToolbarActivity.this, R.drawable.ic_launcher))
+                    .setIntent(intent)
+                    .build();
+            List<ShortcutInfoCompat> list = new ArrayList<>();
+            list.add(shortcutInfoCompat);
+            boolean b = ShortcutManagerCompat.addDynamicShortcuts(ToolbarActivity.this, list);
+            Log.e(TAG, "onCreate shortcut: " + b);
+        });
+
+
+        findViewById(R.id.pin_shortcut).setOnClickListener(v -> {
+            if (ShortcutManagerCompat.isRequestPinShortcutSupported(ToolbarActivity.this)) {
+
+                ShortcutInfoCompat shortcutInfoCompat = new ShortcutInfoCompat.Builder(ToolbarActivity.this, "id")
+                        .setShortLabel("ShortLabel")
+                        .setLongLabel("LongLabel")
+                        .setIcon(IconCompat.createWithResource(ToolbarActivity.this, R.drawable.ic_launcher))
+                        .setIntent(intent)
+                        .build();
+                // Create the PendingIntent object only if your app needs to be notified
+                // that the user allowed the shortcut to be pinned. Note that, if the
+                // pinning operation fails, your app isn't notified. We assume here that the
+                // app has implemented a method called createShortcutResultIntent() that
+                // returns a broadcast intent.
+                Intent pinnedShortcutCallbackIntent =
+                        ShortcutManagerCompat.createShortcutResultIntent(ToolbarActivity.this, shortcutInfoCompat);
+                // Configure the intent so that your app's broadcast receiver gets
+                // the callback successfully.For details, see PendingIntent.getBroadcast().
+                PendingIntent successCallback = PendingIntent.getBroadcast(ToolbarActivity.this, /* request code */ 0,
+                        pinnedShortcutCallbackIntent, /* flags */ 0);
+                ShortcutManagerCompat.requestPinShortcut(ToolbarActivity.this, shortcutInfoCompat, successCallback.getIntentSender());
+
+            }
+        });
+
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.lzy.studysource.lockscreen;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,6 +9,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
 
 public class ScreenService extends Service {
     public ScreenService() {
@@ -31,6 +35,20 @@ public class ScreenService extends Service {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         registerReceiver(mScreenOffReceiver, filter);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                    "MyChannelId",
+                    "My Foreground Service",
+                    NotificationManager.IMPORTANCE_LOW);
+
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.createNotificationChannel(channel);
+
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
+                    this, "MyChannelId");
+            startForeground(1, notificationBuilder.build());
+        }
     }
 
     @Override

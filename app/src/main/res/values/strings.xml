@@ -25,4 +25,7 @@ FloatingActionButton就比较简单了，就是一个漂亮的按钮，其本质
 Behavior
 Behavior是Android新出的Design库里新增的布局概念。Behavior只有是CoordinatorLayout的直接子View才有意义。只要将Behavior绑定到CoordinatorLayout的直接子元素上，就能对触摸事件（touch events）、window insets、measurement、layout以及嵌套滚动（nested scrolling）等动作进行拦截。Design Library的大多功能都是借助Behavior的大量运用来实现的。当然，Behavior无法独立完成工作，必须与实际调用的CoordinatorLayout子视图相绑定。具体有三种方式：通过代码绑定、在XML中绑定或者通过注释实现自动绑定。上面NestedScrollView中app:layout_behavior="@string/appbar_scrolling_view_behavior"的Behavior是系统默认的，我们也可以根据自己的需求来自定义Behavior。
     </string>
+    <string name="compose_shortcut_long_label1">compose_shortcut_long_label1</string>
+    <string name="compose_shortcut_short_label1">compose_shortcut_short_label1</string>
+    <string name="compose_disabled_message1">compose_disabled_message1</string>
 </resources>

@@ -36,4 +36,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/compat_btn" />
 
+    <Button
+        android:id="@+id/shortcut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建动态快捷方式"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn" />
+
+    <Button
+        android:id="@+id/pin_shortcut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建固定快捷方式"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shortcut" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

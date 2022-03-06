@@ -60,17 +60,17 @@ class SinSurfaceView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int)
 
     }
 
-    override fun surfaceCreated(holder: SurfaceHolder?) {
+    override fun surfaceCreated(holder: SurfaceHolder) {
         mIsDrawing = true
         // 开启子线程进行绘制
         Thread(this).start()
     }
 
-    override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
+    override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
 
     }
 
-    override fun surfaceDestroyed(holder: SurfaceHolder?) {
+    override fun surfaceDestroyed(holder: SurfaceHolder) {
         mIsDrawing = false
     }
 

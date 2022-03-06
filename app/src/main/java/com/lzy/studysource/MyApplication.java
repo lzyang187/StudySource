@@ -2,6 +2,7 @@ package com.lzy.studysource;
 
 import android.app.Application;
 import android.content.Intent;
+import android.os.Build;
 
 import com.lzy.studysource.lockscreen.ScreenService;
 
@@ -16,7 +17,9 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        startService(new Intent(this, ScreenService.class));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(new Intent(this, ScreenService.class));
+        }
     }
 
     public static MyApplication getInstance() {
