@@ -28,12 +28,13 @@ class AsyncTaskActivity : AppCompatActivity() {
 
         override fun doInBackground(vararg params: URL?): Boolean {
             Log.d(TAG, "doInBackground: $params")
+            publishProgress(50)
             Thread.sleep(500)
             return true
         }
 
         override fun onProgressUpdate(vararg values: Int?) {
-            Log.d(TAG, "onProgressUpdate: $values")
+            Log.d(TAG, "onProgressUpdate: ${values[0]}")
         }
 
         override fun onPostExecute(result: Boolean?) {
