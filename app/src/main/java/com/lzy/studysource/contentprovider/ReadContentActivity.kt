@@ -6,6 +6,7 @@ import android.provider.ContactsContract
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.database.getIntOrNull
 import com.lzy.studysource.R
 
 class ReadContentActivity : AppCompatActivity() {
@@ -32,17 +33,24 @@ class ReadContentActivity : AppCompatActivity() {
 
     private fun readContacts() {
         val cursor = contentResolver.query(
-            ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null
+            ContactsContract.CommonDataKinds.Phone.CONTENT_URI, arrayOf(
+                ContactsContract.CommonDataKinds.Phone.NAME_RAW_CONTACT_ID,
+                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Phone.NUMBER
+            ), null, null, null
         )
         if (cursor != null) {
             while (cursor.moveToNext()) {
+                // id
+                val id =
+                    cursor.getIntOrNull(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NAME_RAW_CONTACT_ID))
                 // 姓名
                 val displayName =
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                 // 手机号
                 val number =
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                Log.e(TAG, "readContacts: $displayName  $number")
+                Log.e(TAG, "readContacts: $id $displayName  $number")
             }
             cursor.close()
         }
