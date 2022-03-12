@@ -29,13 +29,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AsyncTaskActivity"
-            android:exported="true" >
+            android:name=".drawable.DrawableActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".AsyncTaskActivity"
+            android:exported="true">
+
         </activity>
 
         <provider
@@ -60,16 +65,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".materialdesign.CoordinatorViewPagerActivity"></activity>
-        <activity android:name=".materialdesign.CardViewActivity"></activity>
-        <activity android:name=".materialdesign.transition.TransitionActivityA"></activity>
-        <activity android:name=".jetpack.workmanager.WorkManagerActivity"></activity>
-        <activity android:name=".jetpack.camerax.CameraXActivity"></activity>
-        <activity android:name=".jetpack.lifecycler.LifecycleActivity"></activity>
+        <activity android:name=".materialdesign.CoordinatorViewPagerActivity" />
+        <activity android:name=".materialdesign.CardViewActivity" />
+        <activity android:name=".materialdesign.transition.TransitionActivityA" />
+        <activity android:name=".jetpack.workmanager.WorkManagerActivity" />
+        <activity android:name=".jetpack.camerax.CameraXActivity" />
+        <activity android:name=".jetpack.lifecycler.LifecycleActivity" />
         <activity
             android:name=".contentprovider.ReadContentActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".sqlite.SQLiteActivity"
             android:exported="true" />

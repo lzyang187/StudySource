@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".drawable.DrawableActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bitmap_drawable"
+            android:text="BitmapDrawable" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/layer_list_drawable"
+            android:text="LayerDrawable" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/shape_circle"
+            android:text="实体类实际上是GradientDrawable" />
+
+        <CheckBox
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/replace_rule_tab_radio_left_bg"
+            android:checked="true"
+            android:text="StateListDrawable" />
+
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/level_list_drawable" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/level_list_drawable"
+            android:text="LevelListDrawable" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#000000">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/inset_drawable"
+                android:text="InsetDrawable" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/custom"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="CustomDrawable" />
+
+    </LinearLayout>
+
+</LinearLayout>

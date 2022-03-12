@@ -3,6 +3,7 @@
     android:antialias="true"
     android:dither="true"
     android:filter="true"
+    android:gravity="left|top"
     android:mipMap="true"
     android:src="@drawable/ic_launcher"
     android:tileMode="mirror">

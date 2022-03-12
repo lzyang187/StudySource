@@ -9,7 +9,9 @@
     <item
         android:width="60dp"
         android:height="60dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:left="10dp"
+        android:top="10dp">
         <bitmap android:src="@drawable/ic_launcher" />
     </item>
 </layer-list>
