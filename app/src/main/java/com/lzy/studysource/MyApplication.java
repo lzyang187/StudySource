@@ -6,10 +6,13 @@ import android.os.Build;
 
 import com.lzy.studysource.lockscreen.ScreenService;
 
+import dagger.hilt.android.HiltAndroidApp;
+
 /**
  * @author: cyli8
  * @date: 2019-10-15 18:32
  */
+@HiltAndroidApp
 public class MyApplication extends Application {
     private static MyApplication mInstance;
 

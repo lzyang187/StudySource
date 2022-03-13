@@ -7,6 +7,11 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.lifecycle.HiltViewModel;
+
+@HiltViewModel
 public class JetPackViewModel extends ViewModel {
     //页面销毁保存数据
     private MutableLiveData<List<User>> users;
@@ -38,5 +43,17 @@ public class JetPackViewModel extends ViewModel {
 
     public MutableLiveData<User> getSelected() {
         return selected;
+    }
+
+    @Inject
+    public JetPackViewModel() {
+
+    }
+
+    @Inject
+    JetPackRepository mRepository;
+
+    public void load() {
+        mRepository.load();
     }
 }
