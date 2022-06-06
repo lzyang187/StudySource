@@ -4,9 +4,12 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.badge.BadgeDrawable
+import com.google.android.material.badge.BadgeUtils
 import com.lzy.studysource.R
 
 class DrawableActivity : AppCompatActivity() {
@@ -23,6 +26,35 @@ class DrawableActivity : AppCompatActivity() {
 
         val custom = findViewById<TextView>(R.id.custom)
         custom.background = CustomDrawable(Color.BLUE)
+
+        val badgeTv = findViewById<TextView>(R.id.badge_tv)
+        badgeTv.viewTreeObserver.addOnGlobalLayoutListener(object :
+            ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                BadgeDrawable.create(this@DrawableActivity).apply {
+                    badgeGravity = BadgeDrawable.TOP_END
+                    number = 1087
+                    maxCharacterCount = 4
+                    backgroundColor = Color.RED
+                    isVisible = true
+                    badgeTextColor = Color.BLUE
+                    BadgeUtils.attachBadgeDrawable(this, badgeTv)
+                }
+                badgeTv.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
+
+        val insetTv = findViewById<TextView>(R.id.inset_tv)
+        BadgeDrawable.create(this@DrawableActivity).apply {
+            badgeGravity = BadgeDrawable.TOP_END
+            number = 6
+            maxCharacterCount = 4
+            backgroundColor = Color.RED
+            verticalOffset = 15
+            horizontalOffset = -10
+            isVisible = true
+            BadgeUtils.attachBadgeDrawable(this, insetTv, findViewById(R.id.frame_layout))
+        }
     }
 
     override fun onStart() {

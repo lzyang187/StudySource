@@ -9,12 +9,12 @@ import android.util.AttributeSet
  * author: zyli44
  * date: 2021/8/15 16:40
  */
-class GradientTextView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
+class GradientTextView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     androidx.appcompat.widget.AppCompatTextView(context, attrs, defStyleAttr) {
 
-    constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
-    constructor(context: Context?) : this(context, null, 0)
+    constructor(context: Context) : this(context, null, 0)
 
     private val mGradientMatrix = Matrix()
     private var mLinearGradient: LinearGradient? = null

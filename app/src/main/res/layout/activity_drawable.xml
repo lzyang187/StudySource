@@ -53,21 +53,25 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/second_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <FrameLayout
+            android:id="@+id/frame_layout"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="#000000">
 
             <TextView
+                android:id="@+id/inset_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/inset_drawable"
                 android:text="InsetDrawable" />
+
         </FrameLayout>
 
         <TextView
@@ -75,6 +79,12 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="CustomDrawable" />
+
+        <TextView
+            android:id="@+id/badge_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="带红点的文本" />
 
     </LinearLayout>
 

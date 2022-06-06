@@ -11,12 +11,12 @@ import android.view.ViewGroup
  * author: zyli44
  * date: 2021/8/15 16:40
  */
-class FollowTouchView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
+class FollowTouchView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     androidx.appcompat.widget.AppCompatButton(context, attrs, defStyleAttr) {
 
-    constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
-    constructor(context: Context?) : this(context, null, 0)
+    constructor(context: Context) : this(context, null, 0)
 
     private var mLastX = 0f
     private var mLastY = 0f

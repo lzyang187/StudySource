@@ -101,7 +101,7 @@ public class ViewPager2Activity extends AppCompatActivity {
         viewPager2.setOffscreenPageLimit(3);
 
         TabLayout tabLayout = findViewById(R.id.tablayout);
-        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.OnConfigureTabCallback() {
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 tab.setText(list.get(position));
