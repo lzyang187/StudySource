@@ -23,7 +23,7 @@ class MySQLiteOpenHelper(
         db?.execSQL(createBook)
         // 新安装的时候直接在onCreate创建
         db?.execSQL(createCategory)
-        Toast.makeText(context, "Create succeeded", Toast.LENGTH_SHORT).show()
+        Log.e(TAG, "onCreate: Create succeeded")
     }
 
     private val createCategory =
