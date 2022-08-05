@@ -56,4 +56,61 @@ public class JetPackViewModel extends ViewModel {
     public void load() {
         mRepository.load();
     }
+
+    public MutableLiveData<List<Integer>> intListLiveData = new MutableLiveData<>();
+    public List<Integer> intList = new ArrayList<>();
+
+    public void doIntList() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                intList.add(1);
+                intListLiveData.postValue(intList);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                intList.add(2);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                intList.add(3);
+                intListLiveData.postValue(intList);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+//                intList.set(0, 5);
+                intListLiveData.postValue(intList);
+            }
+        }).start();
+    }
+
+    public MutableLiveData<Boolean> booLiveData = new MutableLiveData<>();
+
+    public void doBoolLiveData() {
+        booLiveData.postValue(true);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                booLiveData.postValue(false);
+                booLiveData.postValue(false);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                booLiveData.postValue(false);
+            }
+        }).start();
+    }
 }
