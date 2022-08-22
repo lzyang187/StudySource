@@ -29,6 +29,10 @@ public class JetPackFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        if (getArguments() != null) {
+            int myArg = getArguments().getInt("myArg");
+            Log.e(TAG, "onCreateView: myArg = " + myArg);
+        }
         return inflater.inflate(R.layout.jet_pack_fragment, container, false);
     }
 

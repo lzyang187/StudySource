@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/foldFragment1">
+
+    <fragment
+        android:id="@+id/foldFragment1"
+        android:name="com.lzy.studysource.fold.FoldFragment1"
+        android:label="FoldFragment1">
+
+        <action
+            android:id="@+id/action_foldFragment1_to_jetPackFragment"
+            app:destination="@id/jetPackFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="myArg"
+                android:defaultValue="1"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/jetPackFragment"
+        android:name="com.lzy.studysource.jetpack.ui.jetpack.JetPackFragment"
+        android:label="JetPackFragment">
+        <argument
+            android:name="myArg"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
