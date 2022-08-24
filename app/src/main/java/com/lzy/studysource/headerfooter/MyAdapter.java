@@ -1,7 +1,7 @@
 package com.lzy.studysource.headerfooter;
 
 import android.content.Context;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,19 +13,31 @@ import com.lzy.studysource.R;
 
 import java.util.List;
 
-class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context mContext;
+    private LayoutInflater mLayoutInflater;
     private List<String> mList;
 
     public MyAdapter(Context context, List<String> list) {
         mContext = context;
+        mLayoutInflater = LayoutInflater.from(mContext);
         mList = list;
+    }
+
+    public interface onItemClickListener {
+        void onItemClick(int position);
+    }
+
+    private onItemClickListener mListener;
+
+    public void setListener(onItemClickListener listener) {
+        this.mListener = listener;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(View.inflate(mContext, R.layout.item_rv, null));
+        return new MyViewHolder(mLayoutInflater.inflate(R.layout.item_rv, parent, false));
     }
 
     @Override
@@ -48,10 +60,9 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public void bindViewHolder(String str, int pos) {
             mTv.setText(str);
-            mTv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.i("cyli8", "onClick: " + pos);
+            mTv.setOnClickListener(v -> {
+                if (mListener != null) {
+                    mListener.onItemClick(pos);
                 }
             });
         }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,14 +15,15 @@
             android:id="@+id/recycler_view"
             android:layout_width="280dp"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="#80000000" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <FrameLayout
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container_1"
+            android:name="com.lzy.studysource.fold.FoldFragment1"
             android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:tag="fold_fragment_1" />
 
     </androidx.slidingpanelayout.widget.SlidingPaneLayout>
 

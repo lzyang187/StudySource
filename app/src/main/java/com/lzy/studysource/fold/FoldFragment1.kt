@@ -5,16 +5,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.lzy.studysource.R
+import com.lzy.studysource.jetpack.navigation.NavigationActivity
 
 /**
  * Created by zhaoyang.li5 on 2022/8/17 16:49
  */
 class FoldFragment1 : Fragment() {
+
+    private val mViewModel: FoldViewModel by activityViewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i(TAG, "onCreate: ")
@@ -35,20 +39,27 @@ class FoldFragment1 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.i(TAG, "onViewCreated: ")
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<View>(R.id.tv).setOnClickListener {
+        val myArg = arguments?.getString("myArg") ?: "空"
+        val tv = view.findViewById<TextView>(R.id.tv)
+        tv.text = myArg
+        tv.setOnClickListener {
+            if (activity is NavigationActivity) {
 //            val navController = findNavController()
 //            val navController = it.findNavController()
-            val navController = activity?.findNavController(R.id.tv)
+                val navController = activity?.findNavController(R.id.tv)
 
-            // 使用 Safe Args 实现类型安全的导航
-            val action = FoldFragment1Directions.actionFoldFragment1ToJetPackFragment(4)
-            navController?.navigate(action)
-            // 使用 ID 导航
+                // 使用 Safe Args 实现类型安全的导航
+                val action = FoldFragment1Directions.actionFoldFragment1ToJetPackFragment(4)
+                navController?.navigate(action)
+                // 使用 ID 导航
 //            val bundle = bundleOf()
 //            bundle.putInt("myArg", 2)
 //            navController?.navigate(R.id.action_foldFragment1_to_jetPackFragment, bundle)
-
+            }
         }
+        mViewModel.mSelect.observe(viewLifecycleOwner, {
+            tv.text = it
+        })
     }
 
     override fun onResume() {

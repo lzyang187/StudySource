@@ -4,59 +4,82 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.os.bundleOf
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.RecyclerView
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
 import androidx.window.layout.WindowMetricsCalculator
 import com.lzy.studysource.R
+import com.lzy.studysource.headerfooter.MyAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FoldActivity : AppCompatActivity() {
+
+    private val mViewModel: FoldViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i(TAG, "onCreate: ")
         setContentView(R.layout.activity_fold)
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         val slidingPaneLayout = findViewById<SlidingPaneLayout>(R.id.sliding_pane_layout)
         val switch = findViewById<SwitchCompat>(R.id.switch_view)
         switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                val openPane = slidingPaneLayout.openPane()
-                Log.e(TAG, "onCreate: openPane = $openPane")
+                slidingPaneLayout.openPane()
             } else {
-                val closePane = slidingPaneLayout.closePane()
-                Log.e(TAG, "onCreate: closePane = $closePane")
+                slidingPaneLayout.closePane()
             }
         }
 
-        var foldFragment1 = supportFragmentManager.findFragmentByTag("fold_fragment_1")
-        if (foldFragment1 == null) {
-            foldFragment1 = FoldFragment1()
+        val stringList = mutableListOf<String>()
+        for (i in 0..20) {
+            stringList.add(i.toString())
         }
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container_1, foldFragment1, "fold_fragment_1")
-            .commitNowAllowingStateLoss()
-
-        slidingPaneLayout.addPanelSlideListener(object : SlidingPaneLayout.PanelSlideListener {
-            override fun onPanelSlide(panel: View, slideOffset: Float) {
-                Log.i(TAG, "onPanelSlide:panel = $panel slideOffset = $slideOffset")
+        val adapter = MyAdapter(this, stringList)
+        adapter.setListener {
+            mViewModel.mSelect.value = stringList[it]
+            supportFragmentManager.commit {
+                var foldFragment1 = supportFragmentManager.findFragmentByTag("fold_fragment_1")
+                if (foldFragment1 == null) {
+                    foldFragment1 = FoldFragment1()
+                }
+                val bundle = bundleOf("myArg" to it.toString())
+                foldFragment1.arguments = bundle
+                replace(R.id.container_1, foldFragment1)
+                // If we're already open and the detail pane is visible,
+                // crossfade between the fragments.
+                if (slidingPaneLayout.isOpen) {
+                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                }
             }
+            val openPane = slidingPaneLayout.openPane()
 
-            override fun onPanelOpened(panel: View) {
-                Log.i(TAG, "onPanelOpened: ")
-            }
+            Log.e(TAG, "slidingPaneLayout.openPane: $openPane")
+        }
+        recyclerView.adapter = adapter
 
-            override fun onPanelClosed(panel: View) {
-                Log.i(TAG, "onPanelClosed: ")
-            }
-        })
-        slidingPaneLayout.lockMode = SlidingPaneLayout.LOCK_MODE_UNLOCKED
+//        var foldFragment1 = supportFragmentManager.findFragmentByTag("fold_fragment_1")
+//        if (foldFragment1 == null) {
+//            foldFragment1 = FoldFragment1()
+//        }
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.container_1, foldFragment1, "fold_fragment_1")
+//            .commitNowAllowingStateLoss()
+
+        slidingPaneLayout.lockMode = SlidingPaneLayout.LOCK_MODE_LOCKED
 
 
         lifecycleScope.launch(Dispatchers.Main) {
@@ -88,6 +111,45 @@ class FoldActivity : AppCompatActivity() {
                         }
                     }
             }
+        }
+
+        // 与系统返回按钮集成
+        onBackPressedDispatcher.addCallback(this, TwoPaneOnBackPressedCallback(slidingPaneLayout))
+    }
+
+    class TwoPaneOnBackPressedCallback(
+        private val slidingPaneLayout: SlidingPaneLayout
+    ) : OnBackPressedCallback(
+        // Set the default 'enabled' state to true only if it is slidable (i.e., the panes
+        // are overlapping) and open (i.e., the detail pane is visible).
+        slidingPaneLayout.isSlideable && slidingPaneLayout.isOpen
+    ), SlidingPaneLayout.PanelSlideListener {
+
+        init {
+            slidingPaneLayout.addPanelSlideListener(this)
+        }
+
+        override fun handleOnBackPressed() {
+            // Return to the list pane when the system back button is pressed.
+            val closePane = slidingPaneLayout.closePane()
+            Log.e(TAG, "handleOnBackPressed: closePane = $closePane")
+        }
+
+        override fun onPanelSlide(panel: View, slideOffset: Float) {
+            Log.i(TAG, "onPanelSlide:panel = $panel slideOffset = $slideOffset")
+        }
+
+        override fun onPanelOpened(panel: View) {
+            Log.i(TAG, "onPanelOpened: ")
+            // Intercept the system back button when the detail pane becomes visible.
+            isEnabled = true
+        }
+
+        override fun onPanelClosed(panel: View) {
+            Log.i(TAG, "onPanelClosed: ")
+            // Disable intercepting the system back button when the user returns to the
+            // list pane.
+            isEnabled = false
         }
     }
 
