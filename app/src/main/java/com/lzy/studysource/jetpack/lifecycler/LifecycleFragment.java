@@ -44,11 +44,30 @@ public class LifecycleFragment extends Fragment {
         return inflater.inflate(R.layout.frragment_lifecycle, null);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
     int i = 0;
 
     @Override
     public void onPause() {
         super.onPause();
+        Log.d(TAG, "onPause: ");
         sharedViewModel.setSelected("哈哈哈哈" + (i++));
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
     }
 }

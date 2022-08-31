@@ -41,7 +41,9 @@
         <activity
             android:name=".fold.FoldActivity"
             android:exported="true"
-            android:resizeableActivity="true">
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            android:supportsPictureInPicture="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -96,7 +98,9 @@
         <activity android:name=".materialdesign.transition.TransitionActivityA" />
         <activity android:name=".jetpack.workmanager.WorkManagerActivity" />
         <activity android:name=".jetpack.camerax.CameraXActivity" />
-        <activity android:name=".jetpack.lifecycler.LifecycleActivity" />
+        <activity android:name=".jetpack.lifecycler.LifecycleActivity">
+
+        </activity>
         <activity
             android:name=".contentprovider.ReadContentActivity"
             android:exported="true" />
