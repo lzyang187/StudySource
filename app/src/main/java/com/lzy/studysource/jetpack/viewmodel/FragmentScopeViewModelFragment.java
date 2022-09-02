@@ -1,6 +1,8 @@
 package com.lzy.studysource.jetpack.viewmodel;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,7 @@ import com.lzy.studysource.R;
  * Created by zhaoyang.li5 on 2022/9/2 11:08
  */
 public class FragmentScopeViewModelFragment extends Fragment {
-
+    private static final String TAG = "FragmentScopeViewModelFragment";
     private TextView textView;
 
     @Nullable
@@ -38,5 +40,12 @@ public class FragmentScopeViewModelFragment extends Fragment {
                 textView.setText(String.valueOf(integer));
             }
         });
+    }
+
+    @SuppressLint("LongLogTag")
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, "onDestroy: ");
     }
 }
