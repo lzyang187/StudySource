@@ -3,6 +3,7 @@ package com.lzy.studysource.fold
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.lzy.studysource.R
 
@@ -14,7 +15,11 @@ class ColorMatrixDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_color_matrix_detail)
 
         val str = intent.getStringExtra(DETAIL_EXTRA)
-        findViewById<TextView>(R.id.matrix_tv).text = str
+        val tv = findViewById<TextView>(R.id.matrix_tv)
+        tv.text = str
+        tv.setOnClickListener {
+            AlertDialog.Builder(this).setTitle("title").setMessage("message").show()
+        }
 
     }
 
