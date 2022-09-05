@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lzy.studysource">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -30,12 +31,35 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".jetpack.viewmodel.FragmentScopeViewModelActivity"
-            android:exported="true" >
+            android:name=".fold.SplitListPlaceholderActivity"
+            android:exported="true"
+            android:resizeableActivity="true" />
+        <activity
+            android:name=".fold.ColorMatrixDetailActivity"
+            android:exported="true"
+            android:resizeableActivity="true" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
+            <!-- This entry makes ExampleWindowInitializer discoverable. -->
+            <meta-data
+                android:name="com.lzy.studysource.fold.ExampleWindowInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <activity
+            android:name=".colormatrix.ColorMatrixListActivity"
+            android:exported="true"
+            android:resizeableActivity="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,16 +67,22 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".fold.EmbeddingActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".jetpack.viewmodel.FragmentScopeViewModelActivity"
+            android:exported="true" />
+        <activity
             android:name=".jetpack.navigation.NavigationActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".fold.FoldActivity"
             android:exported="true"
             android:resizeableActivity="true"
             android:screenOrientation="portrait"
-            android:supportsPictureInPicture="true">
-
-        </activity>
+            android:supportsPictureInPicture="true" />
         <activity
             android:name=".coroutine.CoroutineActivity"
             android:exported="true" />
@@ -101,7 +131,7 @@
         <activity android:name=".materialdesign.transition.TransitionActivityA" />
         <activity android:name=".jetpack.workmanager.WorkManagerActivity" />
         <activity android:name=".jetpack.camerax.CameraXActivity" />
-        <activity android:name=".jetpack.lifecycler.LifecycleActivity"></activity>
+        <activity android:name=".jetpack.lifecycler.LifecycleActivity" />
         <activity
             android:name=".contentprovider.ReadContentActivity"
             android:exported="true" />

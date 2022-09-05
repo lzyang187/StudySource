@@ -1,0 +1,31 @@
+<!-- The split configuration for activities. -->
+<resources xmlns:window="http://schemas.android.com/apk/res-auto">
+
+    <!-- Automatically split the following activity pairs. -->
+    <!-- 当辅助 activity 结束时，自动结束主要 activity : window:finishPrimaryWithSecondary="true" -->
+    <SplitPairRule
+        window:clearTop="true"
+        window:finishPrimaryWithSecondary="false"
+        window:finishSecondaryWithPrimary="true"
+        window:splitMinWidth="600dp"
+        window:splitRatio="0.4">
+        <SplitPairFilter
+            window:primaryActivityName="com.lzy.studysource.colormatrix.ColorMatrixListActivity"
+            window:secondaryActivityName="com.lzy.studysource.fold.ColorMatrixDetailActivity" />
+
+    </SplitPairRule>
+
+    <!-- Automatically launch a placeholder for the list activity. -->
+    <SplitPlaceholderRule
+        window:placeholderActivityName="com.lzy.studysource.fold.SplitListPlaceholderActivity"
+        window:splitMinWidth="600dp"
+        window:splitRatio="0.4">
+        <ActivityFilter window:activityName="com.lzy.studysource.colormatrix.ColorMatrixListActivity" />
+    </SplitPlaceholderRule>
+
+    <!-- 使用展开配置来强制 activity 始终填满任务窗口： -->
+    <ActivityRule window:alwaysExpand="true">
+        <ActivityFilter window:activityName=".FullWidthActivity" />
+    </ActivityRule>
+
+</resources>

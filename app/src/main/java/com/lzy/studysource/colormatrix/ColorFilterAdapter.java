@@ -1,6 +1,7 @@
 package com.lzy.studysource.colormatrix;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ColorMatrixColorFilter;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lzy.studysource.R;
+import com.lzy.studysource.fold.ColorMatrixDetailActivity;
 
 import java.util.List;
 
@@ -42,6 +44,14 @@ public class ColorFilterAdapter extends RecyclerView.Adapter<ColorFilterAdapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView.setText(mList.get(position).name);
         holder.imageView.setColorFilter(new ColorMatrixColorFilter(mList.get(position).filter));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ColorMatrixDetailActivity.class);
+                intent.putExtra(ColorMatrixDetailActivity.DETAIL_EXTRA, mList.get(position).name);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
