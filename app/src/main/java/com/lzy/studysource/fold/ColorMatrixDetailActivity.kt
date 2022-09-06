@@ -1,10 +1,14 @@
 package com.lzy.studysource.fold
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.util.Consumer
+import androidx.window.embedding.SplitController
+import androidx.window.embedding.SplitInfo
 import com.lzy.studysource.R
 
 class ColorMatrixDetailActivity : AppCompatActivity() {
@@ -20,12 +24,25 @@ class ColorMatrixDetailActivity : AppCompatActivity() {
         tv.setOnClickListener {
             AlertDialog.Builder(this).setTitle("title").setMessage("message").show()
         }
-
     }
 
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart: ")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            SplitController.getInstance()
+                .addSplitListener(this, mainExecutor, mSplitInfoChangeCallback)
+        }
+    }
+
+    private val mSplitInfoChangeCallback by lazy {
+        SplitInfoChangeCallback()
+    }
+
+    inner class SplitInfoChangeCallback : Consumer<List<SplitInfo>> {
+        override fun accept(splitInfoList: List<SplitInfo>) {
+            Log.d(TAG, "accept: splitInfos = $splitInfoList")
+        }
     }
 
     override fun onResume() {
@@ -41,6 +58,9 @@ class ColorMatrixDetailActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.d(TAG, "onStop: ")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            SplitController.getInstance().removeSplitListener(mSplitInfoChangeCallback)
+        }
     }
 
     override fun onDestroy() {

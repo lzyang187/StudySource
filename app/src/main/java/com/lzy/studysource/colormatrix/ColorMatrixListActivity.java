@@ -1,13 +1,17 @@
 package com.lzy.studysource.colormatrix;
 
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Consumer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.window.embedding.SplitController;
+import androidx.window.embedding.SplitInfo;
 
 import com.lzy.studysource.R;
 
@@ -62,7 +66,17 @@ public class ColorMatrixListActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart: ");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            SplitController.getInstance().addSplitListener(this, getMainExecutor(), mSplitInfoChangeCallback);
+        }
     }
+
+    private final Consumer<List<SplitInfo>> mSplitInfoChangeCallback = new Consumer<List<SplitInfo>>() {
+        @Override
+        public void accept(List<SplitInfo> splitInfos) {
+            Log.d(TAG, "accept: splitInfos = " + splitInfos);
+        }
+    };
 
     @Override
     protected void onResume() {
@@ -80,6 +94,9 @@ public class ColorMatrixListActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.d(TAG, "onStop: ");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            SplitController.getInstance().removeSplitListener(mSplitInfoChangeCallback);
+        }
     }
 
     @Override
