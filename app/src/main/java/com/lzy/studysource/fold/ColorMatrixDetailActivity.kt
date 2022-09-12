@@ -1,5 +1,6 @@
 package com.lzy.studysource.fold
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +23,8 @@ class ColorMatrixDetailActivity : AppCompatActivity() {
         val tv = findViewById<TextView>(R.id.matrix_tv)
         tv.text = str
         tv.setOnClickListener {
-            AlertDialog.Builder(this).setTitle("title").setMessage("message").show()
+//            AlertDialog.Builder(this).setTitle("title").setMessage("message").show()
+            startActivity(Intent(this, EmbeddingActivity::class.java))
         }
     }
 
@@ -61,6 +63,11 @@ class ColorMatrixDetailActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             SplitController.getInstance().removeSplitListener(mSplitInfoChangeCallback)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Log.d(TAG, "onBackPressed: ")
     }
 
     override fun onDestroy() {

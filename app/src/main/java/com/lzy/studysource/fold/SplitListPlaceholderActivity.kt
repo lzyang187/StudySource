@@ -32,6 +32,11 @@ class SplitListPlaceholderActivity : AppCompatActivity() {
         Log.d(TAG, "onStop: ")
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Log.d(TAG, "onBackPressed: ")
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy: ")

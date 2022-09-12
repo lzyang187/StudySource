@@ -20,8 +20,13 @@ class EmbeddingActivity : AppCompatActivity() {
         val splitSupported = SplitController.Companion.getInstance().isSplitSupported()
         Log.d(TAG, "splitSupported: $splitSupported")
 
-        startActivity(Intent(this, ColorMatrixListActivity::class.java))
+//        startActivity(Intent(this, ColorMatrixListActivity::class.java))
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Log.d(TAG, "onBackPressed: ")
     }
 
     companion object {

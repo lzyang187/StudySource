@@ -31,7 +31,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -56,19 +55,19 @@
                 android:value="androidx.startup" />
         </provider>
 
+        <activity android:name=".player.video.surfaceview.SurfaceViewActivity">
+
+        </activity>
         <activity
             android:name=".colormatrix.ColorMatrixListActivity"
             android:exported="true"
             android:resizeableActivity="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".fold.EmbeddingActivity"
-            android:exported="true">
+            android:exported="true"
+            android:resizeableActivity="true">
 
         </activity>
         <activity
@@ -82,7 +81,13 @@
             android:exported="true"
             android:resizeableActivity="true"
             android:screenOrientation="portrait"
-            android:supportsPictureInPicture="true" />
+            android:supportsPictureInPicture="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".coroutine.CoroutineActivity"
             android:exported="true" />
