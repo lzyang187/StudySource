@@ -80,13 +80,18 @@
             android:name=".fold.FoldActivity"
             android:exported="true"
             android:resizeableActivity="true"
-            android:screenOrientation="portrait"
             android:supportsPictureInPicture="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- <layout
+                 android:defaultWidth="600dp"
+                 android:defaultHeight="500dp"
+                 android:gravity="top|end"
+                 android:minWidth="200dp"
+                 android:minHeight="150dp" /> -->
         </activity>
         <activity
             android:name=".coroutine.CoroutineActivity"

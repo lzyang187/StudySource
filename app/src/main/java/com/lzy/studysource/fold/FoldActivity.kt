@@ -182,6 +182,37 @@ class FoldActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i(TAG, "onResume: ")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Log.e(TAG, "isInMultiWindowMode: $isInMultiWindowMode")
+            Log.e(TAG, "isInPictureInPictureMode: $isInPictureInPictureMode")
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onMultiWindowModeChanged(isInMultiWindowMode: Boolean, newConfig: Configuration) {
+        super.onMultiWindowModeChanged(isInMultiWindowMode, newConfig)
+        Log.e(TAG, "onMultiWindowModeChanged: isInMultiWindowMode = $isInMultiWindowMode ")
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onPictureInPictureModeChanged(
+        isInPictureInPictureMode: Boolean, newConfig: Configuration
+    ) {
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
+        Log.e(
+            TAG,
+            "onPictureInPictureModeChanged: isInPictureInPictureMode = $isInPictureInPictureMode"
+        )
+    }
+
+    override fun onTopResumedActivityChanged(isTopResumedActivity: Boolean) {
+        super.onTopResumedActivityChanged(isTopResumedActivity)
+        Log.e(TAG, "onTopResumedActivityChanged: isTopResumedActivity = $isTopResumedActivity")
+        if (isTopResumedActivity) {
+            // Can be a signal to re-acquire exclusive resources
+        } else {
+            // No longer the top resumed activity
+        }
     }
 
     override fun onPause() {
