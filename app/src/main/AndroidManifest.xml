@@ -55,8 +55,17 @@
                 android:value="androidx.startup" />
         </provider>
 
-        <activity android:name=".player.video.surfaceview.SurfaceViewActivity">
+        <activity
+            android:name=".player.video.surfaceview.SurfaceViewActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".colormatrix.ColorMatrixListActivity"
@@ -81,11 +90,7 @@
             android:exported="true"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             <!-- <layout
                  android:defaultWidth="600dp"
                  android:defaultHeight="500dp"
