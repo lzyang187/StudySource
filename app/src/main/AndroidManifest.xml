@@ -35,6 +35,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".jetpack.savedstate.SavedStateActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".fold.SplitListPlaceholderActivity"
             android:exported="true"
             android:resizeableActivity="true" />
@@ -61,24 +70,16 @@
             android:exported="true"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".colormatrix.ColorMatrixListActivity"
             android:exported="true"
-            android:resizeableActivity="true">
-
-        </activity>
+            android:resizeableActivity="true"></activity>
         <activity
             android:name=".fold.EmbeddingActivity"
             android:exported="true"
-            android:resizeableActivity="true">
-
-        </activity>
+            android:resizeableActivity="true"></activity>
         <activity
             android:name=".jetpack.viewmodel.FragmentScopeViewModelActivity"
             android:exported="true" />
@@ -91,12 +92,14 @@
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true">
 
-            <!-- <layout
+            <!--
+                 <layout
                  android:defaultWidth="600dp"
                  android:defaultHeight="500dp"
                  android:gravity="top|end"
                  android:minWidth="200dp"
-                 android:minHeight="150dp" /> -->
+                 android:minHeight="150dp" />
+            -->
         </activity>
         <activity
             android:name=".coroutine.CoroutineActivity"
