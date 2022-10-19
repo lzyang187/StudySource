@@ -37,11 +37,7 @@
         <activity
             android:name=".jetpack.savedstate.SavedStateActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".fold.SplitListPlaceholderActivity"
@@ -79,7 +75,13 @@
         <activity
             android:name=".fold.EmbeddingActivity"
             android:exported="true"
-            android:resizeableActivity="true"></activity>
+            android:resizeableActivity="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".jetpack.viewmodel.FragmentScopeViewModelActivity"
             android:exported="true" />

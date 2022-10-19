@@ -8,7 +8,7 @@ import com.lzy.studysource.R
 class SplitListPlaceholderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate: ")
+        Log.e(TAG, "onCreate: ")
         setContentView(R.layout.activity_split_list_placeholder)
     }
 
@@ -19,7 +19,7 @@ class SplitListPlaceholderActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "onResume: ")
+        Log.e(TAG, "onResume: ")
     }
 
     override fun onPause() {
@@ -39,7 +39,7 @@ class SplitListPlaceholderActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "onDestroy: ")
+        Log.e(TAG, "onDestroy: ")
     }
 
     companion object {
