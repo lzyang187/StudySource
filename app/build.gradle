@@ -15,6 +15,20 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix ".debug"
+        }
+
+        /**
+         * The `initWith` property allows you to copy configurations from other build types,
+         * then configure only the settings you want to change.
+         */
+        staging {
+            initWith debug
+            applicationIdSuffix ".debugStaging"
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -25,39 +39,24 @@ android {
         enabled true
     }
 
-    flavorDimensions "api", "mode"
+    // Specifies one flavor dimension.
+    flavorDimensions "version"
 
     productFlavors {
         demo {
-            // Assigns this product flavor to the "mode" flavor dimension.
-            dimension "mode"
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+            dimension "version"
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
         }
 
         full {
-            dimension "mode"
-        }
-
-        // Configurations in the "api" product flavors override those in "mode"
-        // flavors and the defaultConfig {} block. Gradle determines the priority
-        // between flavor dimensions based on the order in which they appear next
-        // to the flavorDimensions property above--the first dimension has a higher
-        // priority than the second, and so on.
-        minApi24 {
-            dimension "api"
-            minSdkVersion '24'
-            // To ensure the target device receives the version of the app with
-            // the highest compatible API level, assign version codes in increasing
-            // value with API level. To learn more about assigning version codes to
-            // support app updates and uploading to Google Play, read Multiple APK Support
-            versionCode 30000 + android.defaultConfig.versionCode
-            versionNameSuffix "-minApi24"
-        }
-
-        minApi23 {
-            dimension "api"
-            minSdkVersion '23'
-            versionCode 20000 + android.defaultConfig.versionCode
-            versionNameSuffix "-minApi23"
+            dimension "version"
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
         }
     }
 
@@ -65,7 +64,7 @@ android {
     variantFilter { variant ->
         def names = variant.flavors*.name
         // To check for a certain build type, use variant.buildType.name == "<buildType>"
-        if (names.contains("minApi23") && names.contains("demo")) {
+        if (variant.buildType.name.contains("debug") && names.contains("demo")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
         }
