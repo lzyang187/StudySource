@@ -1,8 +1,12 @@
 package com.lzy.studysource.toolbar;
 
 import android.app.PendingIntent;
+import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -20,6 +24,7 @@ import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 
 import com.lzy.studysource.R;
+import com.lzy.studysource.service.BindService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -170,7 +175,22 @@ public class ToolbarActivity extends AppCompatActivity {
             }
         });
 
+
+        // 测试绑定服务
+        bindService(new Intent(this, BindService.class), mServiceConnection, Service.BIND_AUTO_CREATE);
     }
+
+    private final ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.e(TAG, "onServiceConnected: service = " + service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
