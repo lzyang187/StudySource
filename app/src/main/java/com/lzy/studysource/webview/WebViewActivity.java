@@ -2,7 +2,6 @@ package com.lzy.studysource.webview;
 
 import android.graphics.Bitmap;
 import android.net.http.SslError;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.SslErrorHandler;
@@ -145,16 +143,10 @@ public class WebViewActivity extends AppCompatActivity {
 
         settings.setJavaScriptEnabled(true);
         settings.setAllowFileAccess(false);
-        settings.setAllowContentAccess(false);
+        settings.setAllowContentAccess(true);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-        }
-        settings.setAppCacheEnabled(true);
-        String path = getDir("appcachedir", MODE_PRIVATE).getPath();
-        settings.setAppCachePath(path);
-
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setDatabaseEnabled(true);
         settings.setDomStorageEnabled(true);
 
@@ -164,16 +156,14 @@ public class WebViewActivity extends AppCompatActivity {
 //        CookieManager.getInstance().setCookie(url, cookieStr);
 //        CookieManager.getInstance().getCookie(url);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            WebView.setWebContentsDebuggingEnabled(true);
-        }
+        WebView.setWebContentsDebuggingEnabled(true);
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         container.addView(mWebView, lp);
-        mWebView.loadUrl("file:///android_asset/h5.html");
-//        mWebView.loadUrl("http://www.iflytek.com/");
+//        mWebView.loadUrl("file:///android_asset/h5.html");
+        mWebView.loadUrl("https://www.iflytek.com/");
     }
 
-    private View.OnClickListener mClickListener = (v) -> {
+    private final View.OnClickListener mClickListener = (v) -> {
         switch (v.getId()) {
             case R.id.btn_back:
                 if (mWebView.canGoBack()) {
@@ -194,17 +184,26 @@ public class WebViewActivity extends AppCompatActivity {
                 Toast.makeText(this, "已清除访问的历史记录", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_clear_cache:
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                    CookieSyncManager.createInstance(this);
-                }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    CookieManager.getInstance().removeAllCookies(value -> Toast.makeText(WebViewActivity.this, "cookie清除：" + value, Toast.LENGTH_SHORT).show());
-                } else {
-                    CookieManager.getInstance().removeAllCookie();
-                }
+                CookieManager.getInstance().removeAllCookies(value -> Toast.makeText(WebViewActivity.this, "cookie清除：" + value, Toast.LENGTH_SHORT).show());
                 break;
         }
     };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mWebView != null) {
+            mWebView.onResume();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mWebView != null) {
+            mWebView.onPause();
+        }
+    }
 
     @Override
     protected void onDestroy() {
