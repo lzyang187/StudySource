@@ -34,7 +34,7 @@ class TimeActivity : AppCompatActivity() {
             "Calendar: year = $year month = $month date = $date dayOfMonth = $dayOfMonth dayOfWeek = $dayOfWeek"
         )
 
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         Log.e(TAG, "一般日期输出: $data")
         val format = simpleDateFormat.format(data)
         Log.e(TAG, "格式化后: $format")
