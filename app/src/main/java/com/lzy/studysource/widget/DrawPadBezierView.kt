@@ -16,12 +16,12 @@ import kotlin.math.abs
  * author: zyli44
  * date: 2021/7/23 17:26
  */
-class DrawPadBezierView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
+class DrawPadBezierView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     View(context, attrs, defStyleAttr) {
 
-    constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
-    constructor(context: Context?) : this(context, null)
+    constructor(context: Context) : this(context, null)
 
     private var mX = 0f
     private var mY = 0f

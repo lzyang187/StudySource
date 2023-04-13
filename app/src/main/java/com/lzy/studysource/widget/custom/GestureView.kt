@@ -32,14 +32,14 @@ class GestureView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
         mGestureDetector.setOnDoubleTapListener(this)
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
+    override fun onTouchEvent(event: MotionEvent): Boolean {
         return mGestureDetector.onTouchEvent(event)
     }
 
     /**
      * 手指轻轻触摸屏幕的一瞬间
      */
-    override fun onDown(e: MotionEvent?): Boolean {
+    override fun onDown(e: MotionEvent): Boolean {
         Log.e(TAG, "onDown: ")
         return true
     }
@@ -47,14 +47,14 @@ class GestureView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
     /**
      * 手指轻轻触摸屏幕，尚未松开或拖动
      */
-    override fun onShowPress(e: MotionEvent?) {
+    override fun onShowPress(e: MotionEvent) {
         Log.e(TAG, "onShowPress: ")
     }
 
     /**
      * 手指松开
      */
-    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+    override fun onSingleTapUp(e: MotionEvent): Boolean {
         Log.e(TAG, "onSingleTapUp: ")
         return false
     }
@@ -63,14 +63,12 @@ class GestureView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
      * 手指拖动
      */
     override fun onScroll(
-        e1: MotionEvent?,
-        e2: MotionEvent?,
+        e1: MotionEvent,
+        e2: MotionEvent,
         distanceX: Float,
         distanceY: Float
     ): Boolean {
-        if (e1 != null && e2 != null) {
-            Log.e(TAG, "onScroll 计算: ${e1.x - e2.x}  ${e1.y - e2.y}")
-        }
+        Log.e(TAG, "onScroll 计算: ${e1.x - e2.x}  ${e1.y - e2.y}")
         Log.e(TAG, "onScroll: $distanceX   $distanceY")
         return false
     }
@@ -78,7 +76,7 @@ class GestureView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
     /**
      * 手指长按屏幕不放
      */
-    override fun onLongPress(e: MotionEvent?) {
+    override fun onLongPress(e: MotionEvent) {
         Log.e(TAG, "onLongPress: ")
     }
 
@@ -86,8 +84,8 @@ class GestureView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
      * 手指快速滑动后松开
      */
     override fun onFling(
-        e1: MotionEvent?,
-        e2: MotionEvent?,
+        e1: MotionEvent,
+        e2: MotionEvent,
         velocityX: Float,
         velocityY: Float
     ): Boolean {
@@ -99,7 +97,7 @@ class GestureView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
      * 严格的单击行为，如果触发了此回调，那么它后面不可能再紧跟着另一个单击行为。
      * 即这只可能是单击，而不可能是双击中的一次单击
      */
-    override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
+    override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
         Log.e(TAG, "onSingleTapConfirmed: ")
         return false
     }
@@ -107,7 +105,7 @@ class GestureView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
     /**
      * 双击，不可能和onSingleTapConfirmed共存
      */
-    override fun onDoubleTap(e: MotionEvent?): Boolean {
+    override fun onDoubleTap(e: MotionEvent): Boolean {
         Log.e(TAG, "onDoubleTap: ")
         return false
     }
@@ -115,7 +113,7 @@ class GestureView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
     /**
      * 表示发生了双击行为，在双击的期间，都会触发此回调
      */
-    override fun onDoubleTapEvent(e: MotionEvent?): Boolean {
+    override fun onDoubleTapEvent(e: MotionEvent): Boolean {
         Log.e(TAG, "onDoubleTapEvent: ")
         return false
     }

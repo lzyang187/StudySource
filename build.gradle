@@ -35,9 +35,9 @@ task clean(type: Delete) {
 
 ext {
     //android配置的一些常量
-    minSdkVersion = 21
-    compileSdkVersion = 32
-    targetSdkVersion = 30
+    minSdkVersion = 23
+    compileSdkVersion = 33
+    targetSdkVersion = 33
     versionCode = 1
     versionName = "1"
 }

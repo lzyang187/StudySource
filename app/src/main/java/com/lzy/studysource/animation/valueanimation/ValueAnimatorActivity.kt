@@ -44,27 +44,27 @@ class ValueAnimatorActivity : AppCompatActivity() {
             animator.repeatMode = ValueAnimator.REVERSE
 //            animator.start()
             animator.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationCancel(animation: Animator?) {
+                override fun onAnimationCancel(animation: Animator) {
                     super.onAnimationCancel(animation)
                     Log.e(TAG, "onAnimationCancel: ")
                 }
 
-                override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
+                override fun onAnimationStart(animation: Animator, isReverse: Boolean) {
                     super.onAnimationStart(animation, isReverse)
                     Log.e(TAG, "onAnimationStart: $isReverse")
                 }
 
-                override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
+                override fun onAnimationEnd(animation: Animator, isReverse: Boolean) {
                     super.onAnimationEnd(animation, isReverse)
                     Log.e(TAG, "onAnimationEnd: $isReverse")
                 }
 
-                override fun onAnimationRepeat(animation: Animator?) {
+                override fun onAnimationRepeat(animation: Animator) {
                     super.onAnimationRepeat(animation)
                     Log.e(TAG, "onAnimationRepeat: ")
                 }
 
-                override fun onAnimationPause(animation: Animator?) {
+                override fun onAnimationPause(animation: Animator) {
                     super.onAnimationPause(animation)
                     Log.e(TAG, "onAnimationPause: ")
                 }
