@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".storage.FilePickerActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/image_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="图片选择" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/video_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="视频选择" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/audio_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="音频选择" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/doc_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文档选择" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/all_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="所有文件" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
