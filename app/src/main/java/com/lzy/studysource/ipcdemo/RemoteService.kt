@@ -4,6 +4,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import android.os.RemoteCallbackList
+import android.util.Log
 import java.util.concurrent.CopyOnWriteArrayList
 
 class RemoteService : Service() {
@@ -18,6 +19,7 @@ class RemoteService : Service() {
     // 远程实现
     private val mBinder = object : IStudentManager.Stub() {
         override fun addStudent(student: Student?) {
+            Log.e("zhaoyang", "addStudent: ")
             mBookList.add(student)
             // 通知变化
             val size = mRemoteCallbackList.beginBroadcast()
