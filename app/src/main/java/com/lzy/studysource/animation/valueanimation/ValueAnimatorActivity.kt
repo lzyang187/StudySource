@@ -1,12 +1,21 @@
 package com.lzy.studysource.animation.valueanimation
 
-import android.animation.*
-import androidx.appcompat.app.AppCompatActivity
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.AnimatorSet
+import android.animation.ArgbEvaluator
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.util.Log
-import android.view.animation.*
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.Button
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
+import androidx.appcompat.app.AppCompatActivity
 import com.lzy.studysource.R
+
 
 /**
  * 属性动画的代码
@@ -14,13 +23,54 @@ import com.lzy.studysource.R
 class ValueAnimatorActivity : AppCompatActivity() {
 
     private lateinit var mBtn: Button
+    private lateinit var mSeekBar: SeekBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_value_animator)
 
         mBtn = findViewById(R.id.btn)
+        mSeekBar = findViewById(R.id.seek_bar)
+        fractionDemo()
+    }
 
+    private fun fractionDemo() {
+        // 单个属性动画
+        val animator = ObjectAnimator.ofInt(
+            mBtn,
+            "backgroundColor",
+            0xFFFF0000.toInt(),
+            0XFF0000FF.toInt()
+        )
+        animator.duration = 3000
+        // 设置插值器
+        animator.interpolator = LinearInterpolator()
+        // 设置估值器
+        animator.setEvaluator(ArgbEvaluator())
+
+        // 设置动画数值更新监听器
+        animator.addUpdateListener { animation ->
+            val fraction = animation.animatedFraction
+            Log.e(TAG, "onAnimationUpdate fraction: $fraction")
+        }
+        // 设置 SeekBar 的监听器
+        mSeekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    // 当用户拖动 SeekBar 时，设置动画的当前进度为 SeekBar 的进度
+                    val fraction = progress.toFloat() / seekBar.max
+                    animator.setCurrentFraction(fraction)
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // 暂时不需要处理
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // 暂时不需要处理
+            }
+        })
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
