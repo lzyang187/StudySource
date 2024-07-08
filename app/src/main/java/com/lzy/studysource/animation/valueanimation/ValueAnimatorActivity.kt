@@ -6,6 +6,7 @@ import android.animation.AnimatorSet
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -14,7 +15,10 @@ import android.widget.Button
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.lzy.studysource.R
+import com.lzy.studysource.constraint.ConstraintActivity
+import com.lzy.studysource.jetpack.livedata.LiveDataBus
 
 
 /**
@@ -32,6 +36,13 @@ class ValueAnimatorActivity : AppCompatActivity() {
         mBtn = findViewById(R.id.btn)
         mSeekBar = findViewById(R.id.seek_bar)
         fractionDemo()
+        LiveDataBus.get().with("key_test", String::class.java).observeForever(Observer {
+            Log.e("LiveDataBus", "ValueAnimatorActivity onChanged: $it")
+        })
+        mBtn.setOnClickListener {
+            val intent = Intent(this, ConstraintActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun fractionDemo() {

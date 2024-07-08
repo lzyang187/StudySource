@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Placeholder;
 
 import com.lzy.studysource.R;
+import com.lzy.studysource.jetpack.livedata.LiveDataBus;
 import com.lzy.studysource.ui.BaseActivity;
 import com.lzy.studysource.ui.BaseFragment;
 import com.lzy.studysource.ui.BaseTitleActivity;
@@ -44,6 +45,7 @@ public class ConstraintActivity extends AppCompatActivity {
         Placeholder placeholder = findViewById(R.id.placeholder);
 //        placeholder.setContentId(R.id.btn_center);
         findViewById(R.id.btn_center).setOnClickListener(v -> {
+            LiveDataBus.get().with("key_test").postValue("hahaha");
             Intent intent = new Intent(this, BaseTitleActivity.class);
             intent.putExtra(BaseActivity.KEY_FRAGMENT_CLASS_NAME, BaseFragment.class.getName());
             intent.putExtra(BaseTitleActivity.KEY_ACTIVITY_TITLE, "页面的标题");
