@@ -43,6 +43,11 @@ class Activity1 : AppCompatActivity() {
         Log.e(TAG, "onStop: ")
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        Log.e(TAG, "onRestart: ")
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         Log.e(TAG, "onDestroy: ")
