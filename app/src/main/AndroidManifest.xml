@@ -57,7 +57,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".interview.Activity1"
+            android:name=".jetpack.JetPackActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -153,7 +153,6 @@
         <activity
             android:name=".telephony.TelephonyManagerActivity"
             android:exported="true" />
-        <activity android:name=".jetpack.JetPackActivity" />
         <activity
             android:name=".drawable.DrawableActivity"
             android:configChanges="orientation|screenSize"

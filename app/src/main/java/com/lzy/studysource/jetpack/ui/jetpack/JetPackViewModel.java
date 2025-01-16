@@ -104,6 +104,7 @@ public class JetPackViewModel extends ViewModel {
                 }
                 booLiveData.postValue(false);
                 booLiveData.postValue(false);
+                booLiveData.postValue(true);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
